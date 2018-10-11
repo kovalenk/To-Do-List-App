@@ -12,7 +12,7 @@ import {TodoComponent} from './todo/todo.component';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent],
