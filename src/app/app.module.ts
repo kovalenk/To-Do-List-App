@@ -7,13 +7,15 @@ import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
 import {TodoComponent} from './todo/todo.component';
 import {StartPageComponent} from './start-page/start-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MonthlyViewComponent } from './monthly-view/monthly-view.component';
 @NgModule({
-  declarations: [AppComponent, TodoComponent, StartPageComponent],
+  declarations: [AppComponent, TodoComponent, StartPageComponent, MonthlyViewComponent],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-  ],
+    AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

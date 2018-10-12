@@ -1,0 +1,202 @@
+.Main {
+  position: relative;
+  height: 667px;
+  background: #ffffff;
+}
+
+.logo h2 {
+  margin-top: 4.2%;
+
+  font-weight: 900;
+  color: #050505;
+}
+
+.switc {
+  height: 65px;
+}
+
+.switch {
+  position: relative;
+  height: 50px;
+  width: 286px;
+  margin: 8px auto;
+  background: rgb(245, 244, 244);
+  border: 1px solid rgba(200, 205, 218, 0.306754);
+  box-sizing: border-box;
+  border-radius: 100px;
+}
+
+.switch-label {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 140px;
+  line-height: 46px;
+  font-size: 14px;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+}
+
+.switch-label-off {
+  padding-left: 2px;
+}
+
+.switch-label-on {
+  padding-right: 2px;
+}
+
+.switch-input {
+  display: none;
+}
+
+.switch-input:checked + .switch-label {
+  transition: 0.4s ease-out;
+  transition-property: color, text-shadow;
+  color: white;
+}
+
+.switch-input:checked + .switch-label-on ~ .switch-selection {
+  left: 142px;
+}
+
+.switch-selection {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  display: block;
+  width: 142px;
+  height: 48px;
+  border-radius: 100px;
+  background-color: #5A95FF;
+  transition: left 0.4s ease-out
+}
+
+.calendar {
+  width: 350px;
+  overflow: hidden;
+  display: block;
+}
+
+.CalendarBody {
+  padding: 0 10px 10px 10px;
+  box-sizing: border-box!important;
+}
+.MonthName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+  display: block;
+  margin: 10px 0 10px 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.calendar hr{
+  margin-top: 42px;
+}
+.CalendarBody span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  width: 43px;
+  height: 32px;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+  line-height: 26px;
+}
+
+.CalendarBody .ZeroData:before {
+  opacity:0.3;
+  content:'o';
+}
+
+.circle {
+  border:1px solid #f7f3eb;
+  box-sizing:border-box!important;
+  border-radius:200px!important;
+}
+
+span[data-title]:hover:after,
+div[data-title]:hover:after {
+  font:11px 'Roboto';
+  font-weight:400;
+  content:attr(data-title);
+  position:absolute;
+  margin:0 0 100px;
+  background:#282423;
+  border:1px solid #f7f3eb;
+  color:#f7f3eb;
+  padding:5px;
+  z-index:9999;
+  min-width:150px;
+  max-width:150px;
+}
+
+.footerContainer{
+  position: fixed;
+  width: 100%;
+  height: 75px;
+  bottom: 0;
+  left: 15px;
+}
+.addButton {
+  margin: auto;
+  z-index: 1;
+  width: 58px;
+  height: 58px;
+  display: inline-block;
+  font-size: 38px;
+  padding: 0 0 0 1px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #ffffff;
+  background: #5A95FF;
+  border: 1px solid #4c74d1;
+  border-radius: 50px;
+  box-shadow: 0px 20px 30px rgba(74, 144, 226, 0.393541);
+}
+.addButton:hover {
+  background: #435db0;
+  box-shadow: 0px 10px 15px rgba(33, 58, 97, 0.69);
+  color: #dddddd;
+  border: 1px solid #3c4c92;
+}
+
+.addButton:active {
+  background: #40539e;
+  box-shadow: 0px 10px 12px rgba(15, 30, 49, 0.39);
+  transform: translateY(4px);
+}
+.display{
+  position: absolute;
+  width: 100%;
+  height: 48px;
+  bottom: 0;
+  left: 0;
+  background-color: #e4eff6;
+  z-index: -1;
+}
+.DisplOption, .DisplHistory, .DisplBell, .DisplUser{
+  width: 70px;
+  height: 45px;
+  margin: 0 3px;
+  font-size: 20px;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+.DisplBell{
+  margin-left: 85px;
+}
+
+
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
