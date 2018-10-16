@@ -234,13 +234,14 @@ div[data-title]:hover:after {
   padding: 0;
 }
 
-.ModalAdd button {
+.ModalAdd input{
   text-transform: uppercase;
   width: 100%;
   border-radius: unset;
   height: 50px;
   background: #5A95FF;
 }
+
 .form-control:focus {
   box-shadow: none;
 }
@@ -281,8 +282,8 @@ input[type=color]::-webkit-color-swatch-wrapper {
   top: -7px;
   left: 0px;
 }
-.DeleteCheckout i{
-  color: #5ab35a;
+
+.DeleteCheckout i {
   top: -4px;
 }
 
@@ -293,11 +294,72 @@ input[type=color]::-webkit-color-swatch-wrapper {
   background: #FF5C5C;
   padding-top: 9px;
 }
-.ModalDelete i{
+
+.ModalDelete i {
   padding-right: 15px;
   font-size: 24px;
 }
 
 .btn-danger:focus {
   box-shadow: none;
+}
+
+.close:focus {
+  border: none;
+}
+
+.MyClose {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+  border: none;
+  background-color: inherit;
+}
+
+.MyClose:focus {
+  outline-color: white;
+}
+
+.IcoGreen {
+  color: #5ab35a;
+}
+
+.IcoRed {
+  color: #b34b4a;
+}
+
+.DeleteModalColor {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: inherit;
+  margin-top: 7px;
+}
+
+.modal-header {
+  border: none;
+}
+
+.Horizont {
+  color: red;
+  width: 66%;
+  background-color: #979797;
+  height: 1px;
+  position: absolute;
+  top: 36px;
+  right: 8%;
+}
+
+.DeleteTitle {
+  margin-left: 10px;
+  background-color: white;
+  padding-right: 6px;
+  z-index: 1;
+}
+.DeleteModalBody{
+  padding: 0 30px;
 }

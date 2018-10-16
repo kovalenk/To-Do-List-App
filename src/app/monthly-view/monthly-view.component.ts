@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {TodoService} from "../todo/shared/todo.service";
+import {Component, OnInit} from '@angular/core';
+import {TodoService} from "../shared/todo.service";
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-monthly-view',
@@ -8,7 +9,14 @@ import {TodoService} from "../todo/shared/todo.service";
 })
 export class MonthlyViewComponent implements OnInit {
   toDoListArray: any[];
-  constructor(private toDoService: TodoService) {}
+  DeleteId: any;
+  Date: any;
+  Description: any;
+  Checked: any;
+  Color:any;
+  public close: any;
+  constructor(private toDoService: TodoService, private modalService: NgbModal) {
+  }
 
   ngOnInit() {
     this.toDoService
@@ -26,17 +34,37 @@ export class MonthlyViewComponent implements OnInit {
         });
       });
   }
-  onAdd(itemTitle) {
-    this.toDoService.addTitle(itemTitle.value);
-    itemTitle.value = null;
+
+  AddNewTask(e) {
+    console.log('1');
+    const Form = [];
+    Form.push(e.srcElement[1].value);
+    Form.push(e.srcElement[2].value);
+    Form.push(e.srcElement[3].value);
+    Form.push(e.srcElement[4].value);
+    Form.push(e.srcElement[5].value);
+    this.close = this.toDoService.addTitle(Form);
+    return false;
+    // modal dismiss
   }
 
+  deleteModal(key: any, content) {
+    this.DeleteId = key.$key;
+    this.Date= key.Date;
+    this.Description= key.Description;
+    this.Color = key.Color;
+    this.Checked = key.isChecked;
+    this.modalService.open(content, { centered: true });
+  }
+  addModal(content) {
+    this.modalService.open(content, { centered: true });
+  }
   alterCheck($key: string, isChecked) {
     this.toDoService.checkOrUnCheckTitle($key, !isChecked);
   }
 
-  onDelete($key: string) {
-    this.toDoService.removeTitle($key);
+  onDelete(DeleteId: any) {
+    this.toDoService.removeTitle(DeleteId);
+    //toggle
   }
-
 }

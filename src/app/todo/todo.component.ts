@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TodoService} from './shared/todo.service';
+import {TodoService} from '../shared/todo.service';
 import 'rxjs/Rx';
 @Component({
   selector: 'app-todo',
@@ -37,6 +37,7 @@ export class TodoComponent implements OnInit {
   }
 
   onDelete($key: string) {
+    debugger;
     this.toDoService.removeTitle($key);
   }
 }
