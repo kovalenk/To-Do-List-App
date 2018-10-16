@@ -81,8 +81,9 @@
 
 .CalendarBody {
   padding: 0 10px 10px 10px;
-  box-sizing: border-box!important;
+  box-sizing: border-box !important;
 }
+
 .MonthName {
   font-size: 15px;
   font-weight: 600;
@@ -92,9 +93,11 @@
   text-align: center;
   letter-spacing: 1px;
 }
-.calendar hr{
+
+.calendar hr {
   margin-top: 42px;
 }
+
 .CalendarBody span {
   font-size: 14px;
   font-weight: 400;
@@ -109,39 +112,40 @@
 }
 
 .CalendarBody .ZeroData:before {
-  opacity:0.3;
-  content:'o';
+  opacity: 0.3;
+  content: 'o';
 }
 
 .circle {
-  border:1px solid #f7f3eb;
-  box-sizing:border-box!important;
-  border-radius:200px!important;
+  border: 1px solid #f7f3eb;
+  box-sizing: border-box !important;
+  border-radius: 200px !important;
 }
 
 span[data-title]:hover:after,
 div[data-title]:hover:after {
-  font:11px 'Roboto';
-  font-weight:400;
-  content:attr(data-title);
-  position:absolute;
-  margin:0 0 100px;
-  background:#282423;
-  border:1px solid #f7f3eb;
-  color:#f7f3eb;
-  padding:5px;
-  z-index:9999;
-  min-width:150px;
-  max-width:150px;
+  font: 11px 'Roboto';
+  font-weight: 400;
+  content: attr(data-title);
+  position: absolute;
+  margin: 0 0 100px;
+  background: #282423;
+  border: 1px solid #f7f3eb;
+  color: #f7f3eb;
+  padding: 5px;
+  z-index: 9999;
+  min-width: 150px;
+  max-width: 150px;
 }
 
-.footerContainer{
+.footerContainer {
   position: fixed;
   width: 100%;
   height: 75px;
   bottom: 0;
   left: 15px;
 }
+
 .addButton {
   margin: auto;
   z-index: 1;
@@ -160,6 +164,7 @@ div[data-title]:hover:after {
   border-radius: 50px;
   box-shadow: 0px 20px 30px rgba(74, 144, 226, 0.393541);
 }
+
 .addButton:hover {
   background: #435db0;
   box-shadow: 0px 10px 15px rgba(33, 58, 97, 0.69);
@@ -172,7 +177,8 @@ div[data-title]:hover:after {
   box-shadow: 0px 10px 12px rgba(15, 30, 49, 0.39);
   transform: translateY(4px);
 }
-.display{
+
+.display {
   position: absolute;
   width: 100%;
   height: 48px;
@@ -181,7 +187,8 @@ div[data-title]:hover:after {
   background-color: #e4eff6;
   z-index: -1;
 }
-.DisplOption, .DisplHistory, .DisplBell, .DisplUser{
+
+.DisplOption, .DisplHistory, .DisplBell, .DisplUser {
   width: 70px;
   height: 45px;
   margin: 0 3px;
@@ -189,14 +196,108 @@ div[data-title]:hover:after {
   mix-blend-mode: normal;
   opacity: 0.5;
 }
-.DisplBell{
+
+.DisplBell {
   margin-left: 85px;
 }
-
-
 
 .button:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+.ModalTopic label, .ModalDescription label, .ModalDate label, .ModalNotify label, .ModalColor label {
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-size: 14px;
+
+  color: #050505;
+}
+
+.ModalDescription input, .ModalDate input, .ModalNotify input, .ModalTopic input {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #ced4da;
+}
+
+.ModalColor input {
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  border: none;
+}
+
+.modal-footer {
+  padding: 0;
+}
+
+.ModalAdd button {
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: unset;
+  height: 50px;
+  background: #5A95FF;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+input[type=color]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+
+input[type=color]::-webkit-color-swatch-wrapper {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.DeleteData label {
+  padding-left: 20px;
+}
+
+.DeleteData label, .DeleteCheckout label {
+  padding-left: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 14px;
+  color: #050505;
+}
+
+.DeleteData i, .DeleteCheckout i {
+  padding-top: 5px;
+  font-size: 28px;
+  position: absolute;
+  top: -7px;
+  left: 0px;
+}
+.DeleteCheckout i{
+  color: #5ab35a;
+  top: -4px;
+}
+
+.ModalDelete button {
+  width: 100%;
+  border-radius: unset;
+  height: 50px;
+  background: #FF5C5C;
+  padding-top: 9px;
+}
+.ModalDelete i{
+  padding-right: 15px;
+  font-size: 24px;
+}
+
+.btn-danger:focus {
+  box-shadow: none;
 }
