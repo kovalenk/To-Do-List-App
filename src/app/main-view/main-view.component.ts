@@ -8,9 +8,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./main-view.component.css'],
 })
 export class MainViewComponent implements OnInit {
-  Monthly: boolean = true;
+  Monthly = true;
   ToDoMonthly: any[];
-  ToDodaily: any[];
+  ToDoDaily: any[];
   DeleteId: any;
   Title: any;
   Date: any;
@@ -18,41 +18,56 @@ export class MainViewComponent implements OnInit {
   Checked: any;
   Color: any;
   date: any;
+  Time: any;
   constructor(
     private toDoService: TodoService,
     private modalService: NgbModal
   ) {}
 
   ngOnInit() {
-    const DayNow = new Date().toISOString().split('T')[0];
+    const date = new Date();
+    const DataNow = date.toISOString().split('T')[0];
+    const MonthNow = date.getMonth() + 1;
+    const DayNow = date.getDate();
     this.toDoService
       .getToDoList()
       .snapshotChanges()
       .subscribe(item => {
-        this.ToDodaily = [];
+        this.ToDoDaily = [];
+        this.ToDoMonthly = [];
         item.forEach(element => {
-          let x:any = element.payload.toJSON();
-          console.log(x.Date);
-          if (x.Date === DayNow){
+          const x: any = element.payload.toJSON();
+          const ToDoMonth = Number(x.Date.split('-')[1]);
+          const ToDoDay = Number(x.Date.split('-')[2]);
+          if (x.Date === DataNow) {
             x['$key'] = element.key;
-            this.ToDodaily.push(x);
+            this.ToDoDaily.push(x);
+          }
+          if (
+            ToDoMonth === MonthNow ||
+            (ToDoMonth === MonthNow - 1 && DayNow <= ToDoDay)
+          ) {
+            x['$key'] = element.key;
+            this.ToDoMonthly.push(x);
           }
         });
-        this.ToDodaily.sort((a, b) => {
+        this.ToDoDaily.sort((a, b) => {
+          return a.isChecked - b.isChecked;
+        });
+        this.ToDoMonthly.sort((a, b) => {
           return a.isChecked - b.isChecked;
         });
       });
   }
 
   AddNewTask(e) {
-    console.log('1');
     const Form = [];
     Form.push(e.srcElement[0].value);
     Form.push(e.srcElement[1].value);
     Form.push(e.srcElement[2].value);
     Form.push(e.srcElement[3].value);
     Form.push(e.srcElement[4].value);
-    this.toDoService.addTitle(Form);
+    this.toDoService.addNewToDo(Form);
     return false;
     // modal dismiss
   }
@@ -64,23 +79,26 @@ export class MainViewComponent implements OnInit {
     this.Description = key.Description;
     this.Color = key.Color;
     this.Checked = key.isChecked;
+    this.Time = key.Time;
     this.modalService.open(content, {centered: true});
   }
+
   addModal(content) {
     this.modalService.open(content, {centered: true});
   }
+
   alterCheck($key: string, isChecked) {
-    this.toDoService.checkOrUnCheckTitle($key, !isChecked);
+    this.toDoService.checkOrUnCheckToDo($key, !isChecked);
   }
 
   onDelete(DeleteId: any) {
-    this.toDoService.removeTitle(DeleteId);
-    //toggle
+    this.toDoService.removeToDo(DeleteId);
+    // toggle
   }
 
   switchDaily(status) {
     this.date = new Date();
-    if (status == true) {
+    if (status === true) {
       this.Monthly = true;
     } else {
       this.Monthly = false;

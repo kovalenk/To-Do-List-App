@@ -4,7 +4,9 @@
   font-weight: 900;
   color: #050505;
 }
-
+.line-through{
+  text-decoration: line-through;
+}
 .switc {
   height: 65px;
 }
@@ -192,12 +194,30 @@ div[data-title]:hover:after {
 .DisplOption, .DisplHistory, .DisplBell, .DisplUser {
   width: 70px;
   height: 45px;
-  margin: 0 3px;
   font-size: 20px;
   mix-blend-mode: normal;
   opacity: 0.5;
 }
-
+.DisplOption{
+  position: absolute;
+  bottom: 0;
+  left: 3%;
+}
+.DisplHistory{
+  position: absolute;
+  bottom: 0;
+  left: 22%;
+}
+.DisplBell{
+  position: absolute;
+  bottom: 0;
+  right: 22%;
+}
+.DisplUser{
+  position: absolute;
+  bottom: 0;
+  right: 3%;
+}
 .DisplBell {
   margin-left: 85px;
 }
@@ -228,7 +248,8 @@ div[data-title]:hover:after {
   width: 30px;
   height: 30px;
   padding: 0px;
-  border: none;
+  border-radius: 50px;
+  border: 1px solid #a9a7a7;
 }
 
 .modal-footer {
@@ -376,6 +397,8 @@ input[type=color]::-webkit-color-swatch-wrapper {
 .DayViewCalendar{
   font-size: 26px;
   padding: 5px 0 0 40px;
+  position: absolute;
+  right: 15%;
   color: #808080c7;
 }
 .DataArray{

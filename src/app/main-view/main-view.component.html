@@ -26,7 +26,7 @@
           <div class="DataArray col-sm-12">
             <div class="MyList">
               <ul class="list-group ">
-                <li class="ToDo ToDoList-group-item" *ngFor="let item of toDoListArray">
+                <li class="ToDo ToDoList-group-item" *ngFor="let item of ToDoMonthly">
                   <div class="ToDoContainer ">
                     <div class="ToDoMainPanel d-flex justify-content-start">
                       <div class="ToDoCheck">
@@ -70,7 +70,7 @@
           <div class="DataArray col-sm-12">
             <div class="MyList">
               <ul class="list-group ">
-                <li class="ToDo ToDoList-group-item" *ngFor="let item of ToDodaily">
+                <li class="ToDo ToDoList-group-item" *ngFor="let item of ToDoDaily">
                   <div class="ToDoContainer ">
                     <div class="ToDoMainPanel d-flex justify-content-start">
                       <div class="ToDoCheck">
@@ -131,8 +131,8 @@
 
 <ng-template #DeleteModal let-modal>
   <div class="modal-header d-flex justify-content-start">
-    <input type="color" class="DeleteModalColor" [value]="Color" disabled>
-    <h4 class="DeleteTitle modal-title">{{Title}}</h4>
+    <input type="color"  class="DeleteModalColor" [value]="Color" disabled>
+    <h4 class="DeleteTitle modal-title" [ngClass]="Checked?'line-through':''">{{Title}}</h4>
     <div class="Horizont"></div>
   </div>
   <div class="DeleteModalBody modal-body">
@@ -141,7 +141,7 @@
     </div>
     <div class="DeleteData form-group col-sm-12">
       <i class="fa fa-1g fa-calendar"></i>
-      <label> {{Date}} </label>
+      <label> {{Date| date: 'dd MMM'}} • {{Time}} </label>
     </div>
     <div class="DeleteDescription form-group col-sm-12">
       <label>{{Description}}</label>
@@ -195,7 +195,7 @@
 <ng-template #ViewModal let-modal>
   <div class="modal-header d-flex justify-content-start">
     <input type="color" class="DeleteModalColor" [value]="Color" disabled>
-    <h4 class="DeleteTitle modal-title">{{Title}}</h4>
+    <h4 class="DeleteTitle modal-title" [ngClass]="Checked?'line-through':''">{{Title}}</h4>
     <div class="Horizont"></div>
   </div>
   <div class="DeleteModalBody modal-body">
@@ -204,7 +204,7 @@
     </div>
     <div class="DeleteData form-group col-sm-12">
       <i class="fa fa-1g fa-calendar"></i>
-      <label> {{Date}} </label>
+      <label> {{Date| date: 'dd MMM'}} • {{Time}} </label>
     </div>
     <div class="DeleteDescription form-group col-sm-12">
       <label>{{Description}}</label>

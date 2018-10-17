@@ -12,8 +12,10 @@ export class TodoService {
     return this.toDoList;
   }
 
-  addTitle(form) {
-    const Time = new Date().toLocaleString('en-US', { hour: 'numeric', hour12: true }).toLowerCase();
+  addNewToDo(form) {
+    const Time = new Date()
+      .toLocaleString('en-US', {hour: 'numeric', hour12: true})
+      .toLowerCase();
     this.toDoList.push({
       Title: form[0],
       Description: form[1],
@@ -25,13 +27,13 @@ export class TodoService {
     });
   }
 
-  checkOrUnCheckTitle($key: string, flag: boolean) {
+  checkOrUnCheckToDo($key: string, flag: boolean) {
     console.log(this.toDoList);
     // this.toDoList.
     this.toDoList.update($key, {isChecked: flag});
   }
 
-  removeTitle($key: string) {
+  removeToDo($key: string) {
     this.toDoList.remove($key);
   }
 }
