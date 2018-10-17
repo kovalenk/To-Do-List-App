@@ -8,9 +8,9 @@
       </div>
       <div class="row">
         <div class="col-sm-12 switc">
-
           <div class="switch">
-            <input type="radio" class="switch-input" name="view" value="Monthly" id="Monthly" checked (click)="switchDaily(true)">
+            <input type="radio" class="switch-input" name="view" value="Monthly" id="Monthly" checked
+                   (click)="switchDaily(true)">
             <label for="Monthly" class="switch-label switch-label-off">Monthly</label>
             <input type="radio" class="switch-input" name="view" value="Daily" id="Daily" (click)="switchDaily(false)">
             <label for="Daily" class="switch-label switch-label-on">Daily</label>
@@ -20,21 +20,41 @@
       </div>
       <div *ngIf="Monthly">
         <div class="row d-flex">
-          <div class="col-sm-12">
-            <h2>This month</h2>
+          <div class="ToDoTypeName d-flex justify-content-start">
+            <h3 class="DayViewDate"> This month </h3>
           </div>
-          <div class="col-sm-12">
+          <div class="DataArray col-sm-12">
             <div class="MyList">
-              <ul class="list-group">
-                <li class="list-group-item" *ngFor="let item of toDoListArray">
-                  <span class="hover-cursor" [class.text-success]="item.isChecked"
-                        (click)="alterCheck(item.$key, item.isChecked)">
-                      <i class="fa fa-1g" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
-                  </span>
-                  {{item.title}}
-                  <span class="hover-cursor text-danger pull-right" (click)="deleteModal(item, DeleteModal)">
-                      <i class="fa fa-trash-o fa-1g"></i>
-                  </span>
+              <ul class="list-group ">
+                <li class="ToDo ToDoList-group-item" *ngFor="let item of toDoListArray">
+                  <div class="ToDoContainer ">
+                    <div class="ToDoMainPanel d-flex justify-content-start">
+                      <div class="ToDoCheck">
+                           <span class="hover-cursor" [class.text-success]="item.isChecked"
+                                  (click)="alterCheck(item.$key, item.isChecked)">
+                              <i class="fa fa-1g" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+                           </span>
+                      </div>
+                      <div class="ToDoTitle">
+                        {{item.title}}
+                      </div>
+                      <div class="ToDoDateTime">
+                        2nd Feb • 12 pm
+                      </div>
+                    </div>
+                    <div class="ToDoHelpPanel d-flex">
+                      <div class="ToDoHelpUpLine">
+                      </div>
+                      <div class="ToDoHelpViewDetails">
+                        <span (click)="deleteModal(item, ViewModal)"> View Details</span>
+                      </div>
+                      <div class="ToDoHelpDelete">
+                        <span class="ToDoHelpDeleteIcon hover-cursor" (click)="deleteModal(item, DeleteModal)">
+                        <i class="fa fa-trash-o fa-1g"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -43,22 +63,42 @@
       </div>
       <div *ngIf="!Monthly">
         <div class="row d-flex">
-          <div class="col-sm-12">
-            <!--<h2> {{date}} {{month}}</h2>-->
-            <h2> Daily view</h2>
+          <div class="ToDoTypeName d-flex justify-content-start">
+            <h3 class="DayViewDate"> {{day}} {{month}} {{year}}</h3>
+            <i class="DayViewCalendar fa fa-1g fa-calendar"></i>
           </div>
-          <div class="col-sm-12">
+          <div class="DataArray col-sm-12">
             <div class="MyList">
-              <ul class="list-group">
-                <li class="list-group-item" *ngFor="let item of toDoListArray">
-                  <span class="hover-cursor" [class.text-success]="item.isChecked"
-                        (click)="alterCheck(item.$key, item.isChecked)">
-                      <i class="fa fa-1g" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
-                  </span>
-                  {{item.title}}
-                  <span class="hover-cursor text-danger pull-right" (click)="deleteModal(item, DeleteModal)">
-                      <i class="fa fa-trash-o fa-1g"></i>
-                  </span>
+              <ul class="list-group ">
+                <li class="ToDo ToDoList-group-item" *ngFor="let item of toDoListArray">
+                  <div class="ToDoContainer ">
+                    <div class="ToDoMainPanel d-flex justify-content-start">
+                      <div class="ToDoCheck">
+                           <span class="hover-cursor" [class.text-success]="item.isChecked"
+                                 (click)="alterCheck(item.$key, item.isChecked)">
+                              <i class="fa fa-1g" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+                           </span>
+                      </div>
+                      <div class="ToDoTitle">
+                        {{item.title}}
+                      </div>
+                      <div class="ToDoDateTime">
+                        2nd Feb • 12 pm
+                      </div>
+                    </div>
+                    <div class="ToDoHelpPanel d-flex">
+                      <div class="ToDoHelpUpLine">
+                      </div>
+                      <div class="ToDoHelpViewDetails">
+                        <span (click)="deleteModal(item, ViewModal)"> View Details</span>
+                      </div>
+                      <div class="ToDoHelpDelete">
+                        <span class="ToDoHelpDeleteIcon hover-cursor" (click)="deleteModal(item, DeleteModal)">
+                        <i class="fa fa-trash-o fa-1g"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -92,7 +132,7 @@
 <ng-template #DeleteModal let-modal>
   <div class="modal-header d-flex justify-content-start">
     <input type="color" class="DeleteModalColor" [value]="Color" disabled>
-    <h4 class="DeleteTitle modal-title">Meet Lorence</h4>
+    <h4 class="DeleteTitle modal-title">{{Title}}</h4>
     <div class="Horizont"></div>
   </div>
   <div class="DeleteModalBody modal-body">
@@ -150,4 +190,33 @@
       <input type="submit" class="btn btn-primary" value="Add">
     </div>
   </form>
+</ng-template>
+
+<ng-template #ViewModal let-modal>
+  <div class="modal-header d-flex justify-content-start">
+    <input type="color" class="DeleteModalColor" [value]="Color" disabled>
+    <h4 class="DeleteTitle modal-title">{{Title}}</h4>
+    <div class="Horizont"></div>
+  </div>
+  <div class="DeleteModalBody modal-body">
+    <div class="form-group col-sm-12" hidden>
+      <input type="text" [value]="DeleteId">
+    </div>
+    <div class="DeleteData form-group col-sm-12">
+      <i class="fa fa-1g fa-calendar"></i>
+      <label> {{Date}} </label>
+    </div>
+    <div class="DeleteDescription form-group col-sm-12">
+      <label>{{Description}}</label>
+    </div>
+    <div class="DeleteCheckout form-group col-sm-12">
+      <i class="fa  fa-1g" [ngClass]="Checked?'fa-check-circle-o IcoGreen':'fa-close IcoRed'"></i>
+      <label>{{Checked?'completed':'non completed'}}</label>
+    </div>
+  </div>
+  <div class="ModalInfo modal-footer">
+    <button type="button" class="btn d-flex justify-content-center">
+      <label>Close</label>
+    </button>
+  </div>
 </ng-template>

@@ -19,7 +19,7 @@ export class TodoService {
       Date: form[2],
       Notification: form[3],
       Color: form[4],
-      isChecked: false
+      isChecked: false,
     });
   }
 

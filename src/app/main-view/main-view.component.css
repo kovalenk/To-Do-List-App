@@ -149,7 +149,7 @@ div[data-title]:hover:after {
 
 .addButton {
   margin: auto;
-  z-index: 1;
+  z-index: 5;
   width: 58px;
   height: 58px;
   display: inline-block;
@@ -295,7 +295,13 @@ input[type=color]::-webkit-color-swatch-wrapper {
   background: #FF5C5C;
   padding-top: 9px;
 }
-
+.ModalInfo button{
+  width: 100%;
+  border-radius: unset;
+  height: 50px;
+  background: #ffea7e;
+  padding-top: 9px;
+}
 .ModalDelete i {
   padding-right: 15px;
   font-size: 24px;
@@ -363,4 +369,142 @@ input[type=color]::-webkit-color-swatch-wrapper {
 }
 .DeleteModalBody{
   padding: 0 30px;
+}
+.DayViewDate{
+  padding-left: 16px;
+}
+.DayViewCalendar{
+  font-size: 26px;
+  padding: 5px 0 0 40px;
+  color: #808080c7;
+}
+.DataArray{
+  height: 445px;
+  overflow-y: auto;
+}
+.ToDoTypeName{
+  width: 84%;
+  margin: 3px auto;
+}
+.ToDo{
+  width: 84%;
+  height: 48px;
+  margin: 7px auto;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0px 5px 20px #88888824;
+  transition: height .35s linear;
+}
+.ToDoMainPanel{
+  z-index: 0;
+}
+.ToDo:hover{
+  height: 94px;
+}
+.ToDoList-group-item:hover{
+  z-index: 0;
+}
+.ToDoList-group-item{
+  position: relative;
+  display: block;
+  padding: 13px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #1d212417;
+}
+.ToDoCheck{
+  z-index: 5;
+  padding: 0 10px;
+}
+.ToDoTitle{
+  cursor: pointer;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 14px;
+  padding: 2px 5px;
+}
+.ToDoDateTime{
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 14px;
+  position: absolute;
+  right: 25px;
+}
+.ToDoDelete{
+  width: 0px;
+  opacity: 0;
+  height: 48px;
+  background-color: #b34b4a;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: width .4s ease-in-out, opacity .5s;
+
+}
+
+.ToDoHelpPanel{
+  z-index: -1;
+  height: 46px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.ToDoHelpUpLine{
+  position: absolute;
+  left: 5%;
+  width: 90%;
+  margin: auto;
+  height: 1px;
+  border-bottom: 1px solid #9797978f;
+}
+.ToDoHelpViewDetails{
+  cursor: pointer;
+  padding: 13px 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 14px;
+}
+.ToDoHelpViewDetails:hover{
+  text-decoration: underline;
+}
+.ToDoHelpDelete{
+  height: 25px;
+  position: absolute;
+  top: 11px;
+  right: 10%;
+  padding: 0px 6px 0 16px;
+  border-left: 1px solid#979797;
+}
+.ToDoHelpDeleteIcon{
+  cursor: pointer;
+  position: absolute;
+  top: -4px;
+  font-size: 21px;
+  color: #FF5C5C;
+}
+.DeleteSpanIco{
+  position: absolute;
+  top: 11px;
+  right: 50px;
+  color: white;
+}
+.DeleteSpanName{
+  position: absolute;
+  top: 15px;
+  right: 8px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: white;
 }

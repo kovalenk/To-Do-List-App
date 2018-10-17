@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {StartPageComponent} from "./start-page/start-page.component";
-import {TodoComponent} from "./todo/todo.component";
-import {MainViewComponent} from "./main-view/main-view.component";
+import {StartPageComponent} from './start-page/start-page.component';
+import {TodoComponent} from './todo/todo.component';
+import {MainViewComponent} from './main-view/main-view.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/start', pathMatch: 'full'},
   {path: 'start', component: StartPageComponent},
   {path: 'todo', component: TodoComponent},
-  {path: 'main', component: MainViewComponent}
+  {path: 'main', component: MainViewComponent},
 ];
 
 @NgModule({
