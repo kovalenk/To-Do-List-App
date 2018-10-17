@@ -19,6 +19,8 @@ export class MainViewComponent implements OnInit {
   Color: any;
   date: any;
   Time: any;
+  modalDelete: any;
+  modalAdd: any;
   constructor(
     private toDoService: TodoService,
     private modalService: NgbModal
@@ -26,7 +28,6 @@ export class MainViewComponent implements OnInit {
 
   ngOnInit() {
     const date = new Date();
-    const DataNow = date.toISOString().split('T')[0];
     const MonthNow = date.getMonth() + 1;
     const DayNow = date.getDate();
     this.toDoService
@@ -39,7 +40,7 @@ export class MainViewComponent implements OnInit {
           const x: any = element.payload.toJSON();
           const ToDoMonth = Number(x.Date.split('-')[1]);
           const ToDoDay = Number(x.Date.split('-')[2]);
-          if (x.Date === DataNow) {
+          if (ToDoDay === DayNow) {
             x['$key'] = element.key;
             this.ToDoDaily.push(x);
           }
@@ -68,8 +69,8 @@ export class MainViewComponent implements OnInit {
     Form.push(e.srcElement[3].value);
     Form.push(e.srcElement[4].value);
     this.toDoService.addNewToDo(Form);
+    this.modalAdd.close();
     return false;
-    // modal dismiss
   }
 
   deleteModal(key: any, content) {
@@ -80,11 +81,12 @@ export class MainViewComponent implements OnInit {
     this.Color = key.Color;
     this.Checked = key.isChecked;
     this.Time = key.Time;
-    this.modalService.open(content, {centered: true});
+    this.modalDelete = this.modalService.open(content, {centered: true});
   }
 
+
   addModal(content) {
-    this.modalService.open(content, {centered: true});
+    this.modalAdd = this.modalService.open(content, {centered: true});
   }
 
   alterCheck($key: string, isChecked) {
@@ -93,7 +95,7 @@ export class MainViewComponent implements OnInit {
 
   onDelete(DeleteId: any) {
     this.toDoService.removeToDo(DeleteId);
-    // toggle
+    this.modalDelete.close();
   }
 
   switchDaily(status) {
