@@ -1,20 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {TodoService} from "../shared/todo.service";
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-monthly-view',
-  templateUrl: './monthly-view.component.html',
-  styleUrls: ['./monthly-view.component.css']
+  selector: 'app-main-view',
+  templateUrl: './main-view.component.html',
+  styleUrls: ['./main-view.component.css']
 })
-export class MonthlyViewComponent implements OnInit {
+export class MainViewComponent implements OnInit {
+  Monthly: boolean = true;
   toDoListArray: any[];
   DeleteId: any;
   Date: any;
   Description: any;
   Checked: any;
   Color:any;
-  public close: any;
   constructor(private toDoService: TodoService, private modalService: NgbModal) {
   }
 
@@ -66,5 +66,14 @@ export class MonthlyViewComponent implements OnInit {
   onDelete(DeleteId: any) {
     this.toDoService.removeTitle(DeleteId);
     //toggle
+  }
+
+  switchDaily(status){
+    if(status == true){
+      this.Monthly = true;
+    }
+    else {
+      this.Monthly = false;
+    }
   }
 }

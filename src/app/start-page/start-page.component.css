@@ -1,8 +1,3 @@
-.Main{
-  position: relative;
-  height: 667px;
-  background: #ffffff;
-}
 .top{
   height: 300px;
 }
@@ -71,9 +66,7 @@
   border-radius: 3px;
 }
 .SignInMedia{
-  position: absolute;
-  top: 78.71%;
-  bottom: 4.05%;
+  margin-top: 90px;
 }
 .FbIconCont{
   width: 50px;

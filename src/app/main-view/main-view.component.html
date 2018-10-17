@@ -1,0 +1,153 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="Main col-sm-12">
+      <div class="row">
+        <div class="col-sm-12 logo align-self-baseline">
+          <h2 class="text-center">TTD</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 switc">
+
+          <div class="switch">
+            <input type="radio" class="switch-input" name="view" value="Monthly" id="Monthly" checked (click)="switchDaily(true)">
+            <label for="Monthly" class="switch-label switch-label-off">Monthly</label>
+            <input type="radio" class="switch-input" name="view" value="Daily" id="Daily" (click)="switchDaily(false)">
+            <label for="Daily" class="switch-label switch-label-on">Daily</label>
+            <span class="switch-selection"></span>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="Monthly">
+        <div class="row d-flex">
+          <div class="col-sm-12">
+            <h2>This month</h2>
+          </div>
+          <div class="col-sm-12">
+            <div class="MyList">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let item of toDoListArray">
+                  <span class="hover-cursor" [class.text-success]="item.isChecked"
+                        (click)="alterCheck(item.$key, item.isChecked)">
+                      <i class="fa fa-1g" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+                  </span>
+                  {{item.title}}
+                  <span class="hover-cursor text-danger pull-right" (click)="deleteModal(item, DeleteModal)">
+                      <i class="fa fa-trash-o fa-1g"></i>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!Monthly">
+        <div class="row d-flex">
+          <div class="col-sm-12">
+            <!--<h2> {{date}} {{month}}</h2>-->
+            <h2> Daily view</h2>
+          </div>
+          <div class="col-sm-12">
+            <div class="MyList">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let item of toDoListArray">
+                  <span class="hover-cursor" [class.text-success]="item.isChecked"
+                        (click)="alterCheck(item.$key, item.isChecked)">
+                      <i class="fa fa-1g" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+                  </span>
+                  {{item.title}}
+                  <span class="hover-cursor text-danger pull-right" (click)="deleteModal(item, DeleteModal)">
+                      <i class="fa fa-trash-o fa-1g"></i>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row footerContainer">
+        <div class="col-sm-12 ">
+          <div class="addButton d-flex justify-content-center" (click)="addModal(AddModal)"><i
+            class="align-self-center fa fa-plus"></i></div>
+          <div class="display d-flex">
+            <div class="DisplOption d-flex justify-content-center">
+              <i class="align-self-center fa fa-list"></i>
+            </div>
+            <div class="DisplHistory d-flex justify-content-center">
+              <i class="align-self-center fa fa-clock-o"></i>
+            </div>
+            <div class="DisplBell d-flex justify-content-center">
+              <i class="align-self-center fa fa-bell"></i>
+            </div>
+            <div class="DisplUser d-flex justify-content-center">
+              <i class="align-self-center fa fa-user"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #DeleteModal let-modal>
+  <div class="modal-header d-flex justify-content-start">
+    <input type="color" class="DeleteModalColor" [value]="Color" disabled>
+    <h4 class="DeleteTitle modal-title">Meet Lorence</h4>
+    <div class="Horizont"></div>
+  </div>
+  <div class="DeleteModalBody modal-body">
+    <div class="form-group col-sm-12" hidden>
+      <input type="text" [value]="DeleteId">
+    </div>
+    <div class="DeleteData form-group col-sm-12">
+      <i class="fa fa-1g fa-calendar"></i>
+      <label> {{Date}} </label>
+    </div>
+    <div class="DeleteDescription form-group col-sm-12">
+      <label>{{Description}}</label>
+    </div>
+    <div class="DeleteCheckout form-group col-sm-12">
+      <i class="fa  fa-1g" [ngClass]="Checked?'fa-check-circle-o IcoGreen':'fa-close IcoRed'"></i>
+      <label>{{Checked?'completed':'non completed'}}</label>
+    </div>
+  </div>
+  <div class="ModalDelete modal-footer">
+    <button type="button" class="btn btn-danger d-flex justify-content-center" data-dismiss="modal"
+            (click)="onDelete(DeleteId)">
+      <i class="fa fa-1g fa-trash"></i> <label>Delete</label>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #AddModal let-modal>
+  <form (submit)="AddNewTask($event)">
+    <div class="modal-header d-flex justify-content-start">
+      <h4 class="AddTitle modal-title">Create New Tasks</h4>
+      <div class="Horizont"></div>
+    </div>
+    <div class="modal-body">
+      <div class="ModalTopic form-group col-sm-12">
+        <label>Topic</label>
+        <input type="text" class=" form-control" placeholder="Write Topic" #itemTitle>
+      </div>
+      <div class="ModalDescription form-group col-sm-12">
+        <label>Description</label>
+        <input type="text" class=" form-control" placeholder="Write Description">
+      </div>
+      <div class="ModalDate form-group col-sm-12">
+        <input type="date" class=" form-control" #itemDate>
+      </div>
+      <div class="ModalNotify form-group col-sm-12">
+        <label>Notification</label>
+        <input type="text" class="form-control" placeholder="10 mins before" #itemNotify>
+      </div>
+      <div class="ModalColor form-group col-sm-12">
+        <label>Choose color</label>
+        <input type="color" class="form-control" value="#50DBE3" #itemColor>
+      </div>
+    </div>
+    <div class="ModalAdd modal-footer">
+      <input type="submit" class="btn btn-primary" value="Add">
+    </div>
+  </form>
+</ng-template>
