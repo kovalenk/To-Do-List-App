@@ -36,10 +36,10 @@
                            </span>
                       </div>
                       <div class="ToDoTitle">
-                        {{item.title}}
+                        {{item.Title}}
                       </div>
                       <div class="ToDoDateTime">
-                        2nd Feb • 12 pm
+                        {{item.Date| date: 'dd MMM'}} • {{item.Time}}
                       </div>
                     </div>
                     <div class="ToDoHelpPanel d-flex">
@@ -64,13 +64,13 @@
       <div *ngIf="!Monthly">
         <div class="row d-flex">
           <div class="ToDoTypeName d-flex justify-content-start">
-            <h3 class="DayViewDate"> {{day}} {{month}} {{year}}</h3>
+            <h3 class="DayViewDate"> {{date| date: 'dd MMMM yyyy' }}</h3>
             <i class="DayViewCalendar fa fa-1g fa-calendar"></i>
           </div>
           <div class="DataArray col-sm-12">
             <div class="MyList">
               <ul class="list-group ">
-                <li class="ToDo ToDoList-group-item" *ngFor="let item of toDoListArray">
+                <li class="ToDo ToDoList-group-item" *ngFor="let item of ToDodaily">
                   <div class="ToDoContainer ">
                     <div class="ToDoMainPanel d-flex justify-content-start">
                       <div class="ToDoCheck">
@@ -80,10 +80,10 @@
                            </span>
                       </div>
                       <div class="ToDoTitle">
-                        {{item.title}}
+                        {{item.Title}}
                       </div>
                       <div class="ToDoDateTime">
-                        2nd Feb • 12 pm
+                        {{item.Date| date: 'dd MMM'}} • {{item.Time}}
                       </div>
                     </div>
                     <div class="ToDoHelpPanel d-flex">

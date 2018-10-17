@@ -13,17 +13,21 @@ export class TodoService {
   }
 
   addTitle(form) {
+    const Time = new Date().toLocaleString('en-US', { hour: 'numeric', hour12: true }).toLowerCase();
     this.toDoList.push({
-      title: form[0],
+      Title: form[0],
       Description: form[1],
       Date: form[2],
+      Time: Time,
       Notification: form[3],
       Color: form[4],
-      isChecked: false,
+      IsChecked: false,
     });
   }
 
   checkOrUnCheckTitle($key: string, flag: boolean) {
+    console.log(this.toDoList);
+    // this.toDoList.
     this.toDoList.update($key, {isChecked: flag});
   }
 
