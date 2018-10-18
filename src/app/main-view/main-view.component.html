@@ -27,33 +27,34 @@
             <div class="MyList">
               <ul class="list-group ">
                 <li class="ToDo ToDoList-group-item" *ngFor="let item of ToDoMonthly">
-                  <div class="ToDoContainer">
-                    <div class="ToDoMainPanel d-flex justify-content-start">
-                      <div class="ToDoCheck">
+                  <div class="ToDoCheck">
                            <span class="hover-cursor" [class.text-success]="item.IsChecked"
-                                  (click)="alterCheck(item.$key, item.IsChecked)">
+                                 (click)="alterCheck(item.$key, item.IsChecked)">
                               <i class="fa fa-1g" [ngClass]="item.IsChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
                            </span>
-                      </div>
+                  </div>
+                  <div class="ToDoContainer">
+                    <div class="ToDoMainPanel d-flex justify-content-start">
                       <div class="ToDoTitle" [ngClass]="item.IsChecked?'line-through':''">
                         {{item.Title}}
                       </div>
                       <div class="ToDoDateTime">
                         {{item.DateTime| date: 'dd MMM'}} • <span class="ToLowerCase">{{item.DateTime| date: 'h a'}}</span>
                       </div>
-                    </div>
-                    <div class="ToDoHelpPanel d-flex">
-                      <div class="ToDoHelpUpLine">
-                      </div>
-                      <div class="ToDoHelpViewDetails">
-                        <span (click)="deleteModal(item, ViewModal)"> View Details</span>
-                      </div>
-                      <div class="ToDoHelpDelete">
+                      <div class="ToDoHelpPanel">
+                        <div class="ToDoHelpUpLine">
+                        </div>
+                        <div class="ToDoHelpViewDetails">
+                          <span (click)="deleteModal(item, ViewModal)"> View Details</span>
+                        </div>
+                        <div class="ToDoHelpDelete">
                         <span class="ToDoHelpDeleteIcon hover-cursor" (click)="deleteModal(item, DeleteModal)">
                         <i class="fa fa-trash-o fa-1g"></i>
                         </span>
+                        </div>
                       </div>
                     </div>
+
                   </div>
                 </li>
               </ul>
@@ -215,7 +216,8 @@
     </div>
   </div>
   <div class="ModalInfo modal-footer">
-    <button type="button" class="btn d-flex justify-content-center">
+    <button type="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <!--<button type="button" class="btn d-flex justify-content-center">-->
       <label>Close</label>
     </button>
   </div>

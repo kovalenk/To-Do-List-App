@@ -27,9 +27,9 @@ export class MainViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const date = new Date();
-    const MonthNow = date.getMonth() + 1;
-    const DayNow = date.getDate();
+    this.date = new Date();
+    const MonthNow = this.date.getMonth() + 1;
+    const DayNow = this.date.getDate();
     this.toDoService
       .getToDoList()
       .snapshotChanges()
@@ -104,11 +104,6 @@ export class MainViewComponent implements OnInit {
   }
 
   switchDaily(status) {
-    this.date = new Date();
-    if (status === true) {
-      this.Monthly = true;
-    } else {
-      this.Monthly = false;
-    }
+    this.Monthly = status;
   }
 }

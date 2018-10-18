@@ -3,12 +3,15 @@
   font-weight: 900;
   color: #050505;
 }
-.line-through{
+
+.line-through {
   text-decoration: line-through;
 }
-.ToLowerCase{
+
+.ToLowerCase {
   text-transform: lowercase;
 }
+
 .switc {
   height: 65px;
 }
@@ -61,8 +64,8 @@
 .switch-selection {
   position: absolute;
   z-index: 1;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   display: block;
   width: 142px;
   height: 48px;
@@ -76,7 +79,6 @@
   height: 667px;
   background: #ffffff;
 }
-
 
 .calendar {
   width: 350px;
@@ -149,6 +151,7 @@ div[data-title]:hover:after {
   height: 75px;
   bottom: 0;
   left: 15px;
+  z-index: 2;
 }
 
 .addButton {
@@ -167,19 +170,19 @@ div[data-title]:hover:after {
   background: #5A95FF;
   border: 1px solid #4c74d1;
   border-radius: 50px;
-  box-shadow: 0px 20px 30px rgba(74, 144, 226, 0.393541);
+  box-shadow: 0 20px 30px rgba(74, 144, 226, 0.393541);
 }
 
 .addButton:hover {
   background: #435db0;
-  box-shadow: 0px 10px 15px rgba(33, 58, 97, 0.69);
+  box-shadow: 0 10px 15px rgba(33, 58, 97, 0.69);
   color: #dddddd;
   border: 1px solid #3c4c92;
 }
 
 .addButton:active {
   background: #40539e;
-  box-shadow: 0px 10px 12px rgba(15, 30, 49, 0.39);
+  box-shadow: 0 10px 12px rgba(15, 30, 49, 0.39);
   transform: translateY(4px);
 }
 
@@ -200,26 +203,31 @@ div[data-title]:hover:after {
   mix-blend-mode: normal;
   opacity: 0.5;
 }
-.DisplOption{
+
+.DisplOption {
   position: absolute;
   bottom: 0;
   left: 3%;
 }
-.DisplHistory{
+
+.DisplHistory {
   position: absolute;
   bottom: 0;
   left: 22%;
 }
-.DisplBell{
+
+.DisplBell {
   position: absolute;
   bottom: 0;
   right: 22%;
 }
-.DisplUser{
+
+.DisplUser {
   position: absolute;
   bottom: 0;
   right: 3%;
 }
+
 .DisplBell {
   margin-left: 85px;
 }
@@ -241,7 +249,7 @@ div[data-title]:hover:after {
 
 .ModalDescription input, .ModalDate input, .ModalNotify input, .ModalTopic input {
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   border-bottom: 1px solid #ced4da;
 }
 
@@ -249,7 +257,7 @@ div[data-title]:hover:after {
   margin-left: 10px;
   width: 30px;
   height: 30px;
-  padding: 0px;
+  padding: 0;
   border-radius: 50px;
   border: 1px solid #a9a7a7;
 }
@@ -258,7 +266,7 @@ div[data-title]:hover:after {
   padding: 0;
 }
 
-.ModalAdd input{
+.ModalAdd input {
   text-transform: uppercase;
   width: 100%;
   border-radius: unset;
@@ -304,7 +312,7 @@ input[type=color]::-webkit-color-swatch-wrapper {
   font-size: 28px;
   position: absolute;
   top: -7px;
-  left: 0px;
+  left: 0;
 }
 
 .DeleteCheckout i {
@@ -318,13 +326,15 @@ input[type=color]::-webkit-color-swatch-wrapper {
   background: #FF5C5C;
   padding-top: 9px;
 }
-.ModalInfo button{
+
+.ModalInfo button {
   width: 100%;
   border-radius: unset;
   height: 50px;
   background: #ffea7e;
   padding-top: 9px;
 }
+
 .ModalDelete i {
   padding-right: 15px;
   font-size: 24px;
@@ -390,76 +400,113 @@ input[type=color]::-webkit-color-swatch-wrapper {
   padding-right: 6px;
   z-index: 1;
 }
-.DeleteModalBody{
+
+.DeleteModalBody {
   padding: 0 30px;
 }
-.DayViewDate{
+
+.DayViewDate {
   padding-left: 16px;
 }
-.DayViewCalendar{
+
+.DayViewCalendar {
   font-size: 26px;
   padding: 5px 0 0 40px;
   position: absolute;
   right: 15%;
   color: #808080c7;
 }
-.DataArray{
+
+.DataArray {
   height: 445px;
   overflow-y: auto;
 }
-.ToDoTypeName{
+
+.ToDoTypeName {
   width: 84%;
   margin: 3px auto;
 }
-.ToDo{
+
+.ToDoContainer {
   width: 84%;
-  height: 48px;
+  height: 34px;
   margin: 7px auto;
   border-radius: 3px;
   border: none;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.06);
   transition: height .35s linear;
 }
-.ToDoMainPanel{
-  z-index: 0;
+
+.ToDoMainPanel {
+  width: 100%;
+  position: absolute;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  top: 0;
+  left: 0;
+  height: 48px;
 }
-.ToDo:hover{
-  height: 94px;
+
+.ToDoContainer:hover {
+  height: 75px;
 }
-.ToDoList-group-item:hover{
-  z-index: 0;
+
+.ToDoContainer:hover .ToDoHelpViewDetails {
+  visibility: visible;
+  opacity: 1;
 }
-.ToDoList-group-item{
-  position: relative;
+
+.ToDoContainer:hover .ToDoHelpUpLine {
+  visibility: visible;
+  opacity: 1;
+}
+
+.ToDoContainer:hover .ToDoHelpDelete {
+  visibility: visible;
+  opacity: 1;
+}
+.ToDoList-group-item {
   display: block;
-  padding: 13px 15px;
-  margin-bottom: -1px;
-  background-color: #fff;
+  position: relative;
+  width: 84%;
+  margin: 6px auto;
+  border-radius: 3px;
   border: 1px solid #1d212417;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12)
 }
-.ToDoCheck{
-  z-index: 5;
-  padding: 0 10px;
+
+.ToDoCheck {
+  position: absolute;
+  width: 12%;
+  height: 97px;
+  padding: 17px 0 0 5%;
+  top: -5px;
+  left: 0;
+  z-index: 1;
 }
-.ToDoTitle{
+
+.ToDoTitle {
   cursor: pointer;
   font-style: normal;
   font-weight: bold;
   line-height: normal;
   font-size: 14px;
-  padding: 2px 5px;
+  position: absolute;
+  top: 14px;
+  left: 12%;
 }
-.ToDoDateTime{
+
+.ToDoDateTime {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   font-size: 13px;
   position: absolute;
-  right: 25px;
-  padding: 3px 0;
+  top: 15px;
+  right: 8%;
 }
-.ToDoDelete{
-  width: 0px;
+
+.ToDoDelete {
+  width: 0;
   opacity: 0;
   height: 48px;
   background-color: #b34b4a;
@@ -468,62 +515,79 @@ input[type=color]::-webkit-color-swatch-wrapper {
   position: absolute;
   right: 0;
   top: 0;
-  transition: width .4s ease-in-out, opacity .5s;
+  transition: width .4s ease-in-out;
 
 }
 
-.ToDoHelpPanel{
-  z-index: -1;
-  height: 46px;
+.ToDoHelpPanel {
+  display: flex;
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 46px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  transition: height .4s ease-in-out;
+
 }
 
-.ToDoHelpUpLine{
+.ToDoHelpUpLine {
+  opacity: 0;
   position: absolute;
   left: 5%;
   width: 90%;
   margin: auto;
   height: 1px;
   border-bottom: 1px solid #9797978f;
+  transition: visibility 0s, opacity 0.5s linear;
+
 }
-.ToDoHelpViewDetails{
+
+.ToDoHelpViewDetails {
+  visibility: hidden;
+  opacity: 0;
   cursor: pointer;
-  padding: 13px 24px;
+  padding: 13px 0 0 5%;
+  width: 40%;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   font-size: 14px;
+  transition: visibility 0s, opacity 0.5s linear;
 }
-.ToDoHelpViewDetails:hover{
+
+.ToDoHelpViewDetails:hover {
   text-decoration: underline;
 }
-.ToDoHelpDelete{
+
+.ToDoHelpDelete {
+  visibility: hidden;
+  opacity: 0;
   height: 25px;
   position: absolute;
   top: 11px;
   right: 10%;
-  padding: 0px 6px 0 16px;
-  border-left: 1px solid#979797;
+  padding: 0 6px 0 16px;
+  border-left: 1px solid #979797;
+  color: #FF5C5C;
+  transition: visibility 0s, opacity 0.5s linear;
 }
-.ToDoHelpDeleteIcon{
+
+.ToDoHelpDeleteIcon {
   cursor: pointer;
   position: absolute;
   top: -4px;
   font-size: 21px;
-  color: #FF5C5C;
 }
-.DeleteSpanIco{
+
+.DeleteSpanIco {
   position: absolute;
   top: 11px;
   right: 50px;
   color: white;
 }
-.DeleteSpanName{
+
+.DeleteSpanName {
   position: absolute;
   top: 15px;
   right: 8px;
