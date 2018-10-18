@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {AngularFireDatabase} from 'angularfire2/database';
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
-  toDoList: AngularFireList<any>;
+  toDoList: any;
   constructor(private firebasedb: AngularFireDatabase) {}
 
   getToDoList() {
@@ -17,8 +17,6 @@ export class TodoService {
     const Fulldate: any = new Date(form[2]);
     Fulldate.setHours(Time);
     const ParseTime = Date.parse(Fulldate);
-    // const date = new Date(ParseTime);
-    //
     this.toDoList.push({
       Title: form[0],
       Description: form[1],
@@ -30,8 +28,6 @@ export class TodoService {
   }
 
   checkOrUnCheckToDo($key: string, flag: boolean) {
-    console.log(this.toDoList);
-    // this.toDoList.
     this.toDoList.update($key, {IsChecked: flag});
   }
 

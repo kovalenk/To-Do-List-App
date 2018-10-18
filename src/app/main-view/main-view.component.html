@@ -39,7 +39,8 @@
                         {{item.Title}}
                       </div>
                       <div class="ToDoDateTime">
-                        {{item.DateTime| date: 'dd MMM'}} • <span class="ToLowerCase">{{item.DateTime| date: 'h a'}}</span>
+                        {{item.DateTime| date: 'dd MMM'}} • <span
+                        class="ToLowerCase">{{item.DateTime| date: 'h a'}}</span>
                       </div>
                       <div class="ToDoHelpPanel">
                         <div class="ToDoHelpUpLine">
@@ -84,7 +85,8 @@
                         {{item.Title}}
                       </div>
                       <div class="ToDoDateTime">
-                        {{item.DateTime| date: 'dd MMM'}} • <span class="ToLowerCase">{{item.DateTime| date: 'h a'}}</span>
+                        {{item.DateTime| date: 'dd MMM'}} • <span
+                        class="ToLowerCase">{{item.DateTime| date: 'h a'}}</span>
                       </div>
                     </div>
                     <div class="ToDoHelpPanel d-flex">
@@ -132,17 +134,15 @@
 
 <ng-template #DeleteModal let-modal>
   <div class="modal-header d-flex justify-content-start">
-    <input type="color"  class="DeleteModalColor" [value]="Color" disabled>
+    <input type="color" class="DeleteModalColor" placeholder="" [value]="Color" disabled>
     <h4 class="DeleteTitle modal-title" [ngClass]="Checked?'line-through':''">{{Title}}</h4>
     <div class="Horizont"></div>
   </div>
   <div class="DeleteModalBody modal-body">
-    <div class="form-group col-sm-12" hidden>
-      <input type="text" [value]="DeleteId">
-    </div>
     <div class="DeleteData form-group col-sm-12">
       <i class="fa fa-1g fa-calendar"></i>
-      <label> {{Date| date: 'dd MMM'}} • {{Time}} </label>
+      <label> {{DateTime| date: 'dd MMM'}} • <span class="ToLowerCase">{{DateTime| date: 'h a'}}</span>
+      </label>
     </div>
     <div class="DeleteDescription form-group col-sm-12">
       <label>{{Description}}</label>
@@ -153,7 +153,7 @@
     </div>
   </div>
   <div class="ModalDelete modal-footer">
-    <button type="button" class="btn btn-danger d-flex justify-content-center" data-dismiss="modal"
+    <button type="button" class="btn btn-danger d-flex justify-content-center"
             (click)="onDelete(DeleteId)">
       <i class="fa fa-1g fa-trash"></i> <label>Delete</label>
     </button>
@@ -169,22 +169,22 @@
     <div class="modal-body">
       <div class="ModalTopic form-group col-sm-12">
         <label>Topic</label>
-        <input type="text" class=" form-control" placeholder="Write Topic" #itemTitle>
+        <input type="text" class=" form-control" name="title" placeholder="Write Topic">
       </div>
       <div class="ModalDescription form-group col-sm-12">
         <label>Description</label>
-        <input type="text" class=" form-control" placeholder="Write Description">
+        <input type="text" class=" form-control" name="description" placeholder="Write Description">
       </div>
       <div class="ModalDate form-group col-sm-12">
-        <input type="date" class=" form-control" #itemDate>
+        <input type="date" class=" form-control" name="date" placeholder="">
       </div>
       <div class="ModalNotify form-group col-sm-12">
         <label>Notification</label>
-        <input type="text" class="form-control" placeholder="10 mins before" #itemNotify>
+        <input type="text" class="form-control" placeholder="10 mins before">
       </div>
       <div class="ModalColor form-group col-sm-12">
         <label>Choose color</label>
-        <input type="color" class="form-control" value="#50DBE3" #itemColor>
+        <input type="color" class="form-control" value="#50DBE3" placeholder="">
       </div>
     </div>
     <div class="ModalAdd modal-footer">
@@ -195,17 +195,15 @@
 
 <ng-template #ViewModal let-modal>
   <div class="modal-header d-flex justify-content-start">
-    <input type="color" class="DeleteModalColor" [value]="Color" disabled>
+    <input type="color" class="DeleteModalColor" placeholder="" [value]="Color" disabled>
     <h4 class="DeleteTitle modal-title" [ngClass]="Checked?'line-through':''">{{Title}}</h4>
     <div class="Horizont"></div>
   </div>
   <div class="DeleteModalBody modal-body">
-    <div class="form-group col-sm-12" hidden>
-      <input type="text" [value]="DeleteId">
-    </div>
     <div class="DeleteData form-group col-sm-12">
       <i class="fa fa-1g fa-calendar"></i>
-      <label> {{Date| date: 'dd MMM'}} • {{Time}} </label>
+      <label> {{DateTime| date: 'dd MMM'}} • <span class="ToLowerCase">{{DateTime| date: 'h a'}}</span>
+      </label>
     </div>
     <div class="DeleteDescription form-group col-sm-12">
       <label>{{Description}}</label>
@@ -216,8 +214,8 @@
     </div>
   </div>
   <div class="ModalInfo modal-footer">
-    <button type="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
-    <!--<button type="button" class="btn d-flex justify-content-center">-->
+    <button type="button" class="btn btn-info d-flex justify-content-center"
+            (click)="modal.dismiss('Cross click')">
       <label>Close</label>
     </button>
   </div>

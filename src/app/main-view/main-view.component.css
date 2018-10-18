@@ -281,7 +281,12 @@ div[data-title]:hover:after {
 .btn-primary:focus {
   box-shadow: none;
 }
-
+.btn-info:focus {
+  box-shadow: none;
+}
+.btn-danger:focus {
+  box-shadow: none;
+}
 input[type=color]::-webkit-color-swatch {
   border: none;
   border-radius: 50%;
@@ -333,6 +338,8 @@ input[type=color]::-webkit-color-swatch-wrapper {
   height: 50px;
   background: #ffea7e;
   padding-top: 9px;
+  color: black;
+  font-weight: 600;
 }
 
 .ModalDelete i {
@@ -340,9 +347,7 @@ input[type=color]::-webkit-color-swatch-wrapper {
   font-size: 24px;
 }
 
-.btn-danger:focus {
-  box-shadow: none;
-}
+
 
 .close:focus {
   border: none;
@@ -477,9 +482,9 @@ input[type=color]::-webkit-color-swatch-wrapper {
 .ToDoCheck {
   position: absolute;
   width: 12%;
-  height: 97px;
-  padding: 17px 0 0 5%;
-  top: -5px;
+  height: 48px;
+  padding: 12px 0 0 5%;
+  top: 0;
   left: 0;
   z-index: 1;
 }
@@ -597,4 +602,39 @@ input[type=color]::-webkit-color-swatch-wrapper {
   font-size: 11px;
   letter-spacing: 1px;
   color: white;
+}
+
+.modal-backdrop {
+  opacity: 0.5;
+  animation: ease-in-out .5s modal-b-fade;
+  transition: all .5s ease-in-out;
+}
+
+.modal {
+  top: -100px;
+  animation: ease-in-out .5s modal-fade;
+  transition: all .5s ease-in-out;
+}
+.modal.show {
+   top: 0;
+}
+
+@keyframes modal-b-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes modal-fade {
+  from {
+    top: -100px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }

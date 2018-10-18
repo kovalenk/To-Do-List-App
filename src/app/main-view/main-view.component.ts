@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from '../shared/todo.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-main-view',
@@ -13,7 +13,7 @@ export class MainViewComponent implements OnInit {
   ToDoDaily: any[];
   DeleteId: any;
   Title: any;
-  Date: any;
+  DateTime: any;
   Description: any;
   Checked: any;
   Color: any;
@@ -24,7 +24,24 @@ export class MainViewComponent implements OnInit {
   constructor(
     private toDoService: TodoService,
     private modalService: NgbModal
-  ) {}
+  ) {
+    NgbModalRef.prototype['c'] = NgbModalRef.prototype.close;
+    NgbModalRef.prototype.close = function(reason: string) {
+      document.querySelector('.modal-backdrop').classList.remove('show');
+      document.querySelector('.modal').classList.remove('show');
+      setTimeout(() => {
+        this['c'](reason);
+      }, 500);
+    };
+    NgbModalRef.prototype['d'] = NgbModalRef.prototype.dismiss;
+    NgbModalRef.prototype.dismiss = function(reason: string) {
+      document.querySelector('.modal-backdrop').classList.remove('show');
+      document.querySelector('.modal').classList.remove('show');
+      setTimeout(() => {
+        this['d'](reason);
+      }, 500);
+    };
+  }
 
   ngOnInit() {
     this.date = new Date();
@@ -82,11 +99,10 @@ export class MainViewComponent implements OnInit {
   deleteModal(key: any, content) {
     this.Title = key.Title;
     this.DeleteId = key.$key;
-    this.Date = key.Date;
+    this.DateTime = key.DateTime;
     this.Description = key.Description;
     this.Color = key.Color;
     this.Checked = key.IsChecked;
-    this.Time = key.Time;
     this.modalDelete = this.modalService.open(content, {centered: true});
   }
 
