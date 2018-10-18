@@ -13,14 +13,16 @@ export class TodoService {
   }
 
   addNewToDo(form) {
-    const Time = new Date()
-      .toLocaleString('en-US', {hour: 'numeric', hour12: true})
-      .toLowerCase();
+    const Time = new Date().getHours();
+    const Fulldate: any = new Date(form[2]);
+    Fulldate.setHours(Time);
+    const ParseTime = Date.parse(Fulldate);
+    // const date = new Date(ParseTime);
+    //
     this.toDoList.push({
       Title: form[0],
       Description: form[1],
-      Date: form[2],
-      Time: Time,
+      DateTime: ParseTime,
       Notification: form[3],
       Color: form[4],
       IsChecked: false,
@@ -30,7 +32,7 @@ export class TodoService {
   checkOrUnCheckToDo($key: string, flag: boolean) {
     console.log(this.toDoList);
     // this.toDoList.
-    this.toDoList.update($key, {isChecked: flag});
+    this.toDoList.update($key, {IsChecked: flag});
   }
 
   removeToDo($key: string) {

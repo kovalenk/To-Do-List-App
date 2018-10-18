@@ -38,25 +38,31 @@ export class MainViewComponent implements OnInit {
         this.ToDoMonthly = [];
         item.forEach(element => {
           const x: any = element.payload.toJSON();
-          const ToDoMonth = Number(x.Date.split('-')[1]);
-          const ToDoDay = Number(x.Date.split('-')[2]);
+          const ToDoDate = new Date(x.DateTime);
+          const ToDoMonth = ToDoDate.getMonth() + 1;
+          const ToDoDay = ToDoDate.getDate();
           if (ToDoDay === DayNow) {
             x['$key'] = element.key;
             this.ToDoDaily.push(x);
           }
-          if (
-            ToDoMonth === MonthNow ||
-            (ToDoMonth === MonthNow - 1 && DayNow <= ToDoDay)
-          ) {
+          if (ToDoMonth === MonthNow) {
             x['$key'] = element.key;
             this.ToDoMonthly.push(x);
           }
         });
-        this.ToDoDaily.sort((a, b) => {
-          return a.isChecked - b.isChecked;
+        this.ToDoMonthly.sort((a, b) => {
+          return a.DateTime - b.DateTime;
         });
         this.ToDoMonthly.sort((a, b) => {
-          return a.isChecked - b.isChecked;
+          return a.IsChecked - b.IsChecked;
+        });
+        this.ToDoDaily.sort((a, b) => {
+          const AToDoHours = new Date(a.DateTime).getHours();
+          const BToDoHours = new Date(b.DateTime).getHours();
+          return AToDoHours - BToDoHours;
+        });
+        this.ToDoDaily.sort((a, b) => {
+          return a.IsChecked - b.IsChecked;
         });
       });
   }
@@ -79,18 +85,17 @@ export class MainViewComponent implements OnInit {
     this.Date = key.Date;
     this.Description = key.Description;
     this.Color = key.Color;
-    this.Checked = key.isChecked;
+    this.Checked = key.IsChecked;
     this.Time = key.Time;
     this.modalDelete = this.modalService.open(content, {centered: true});
   }
-
 
   addModal(content) {
     this.modalAdd = this.modalService.open(content, {centered: true});
   }
 
-  alterCheck($key: string, isChecked) {
-    this.toDoService.checkOrUnCheckToDo($key, !isChecked);
+  alterCheck($key: string, IsChecked) {
+    this.toDoService.checkOrUnCheckToDo($key, !IsChecked);
   }
 
   onDelete(DeleteId: any) {

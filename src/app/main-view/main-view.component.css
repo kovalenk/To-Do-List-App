@@ -6,6 +6,9 @@
 .line-through{
   text-decoration: line-through;
 }
+.ToLowerCase{
+  text-transform: lowercase;
+}
 .switc {
   height: 65px;
 }
@@ -450,9 +453,10 @@ input[type=color]::-webkit-color-swatch-wrapper {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  font-size: 14px;
+  font-size: 13px;
   position: absolute;
   right: 25px;
+  padding: 3px 0;
 }
 .ToDoDelete{
   width: 0px;

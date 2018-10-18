@@ -30,16 +30,16 @@
                   <div class="ToDoContainer">
                     <div class="ToDoMainPanel d-flex justify-content-start">
                       <div class="ToDoCheck">
-                           <span class="hover-cursor" [class.text-success]="item.isChecked"
-                                  (click)="alterCheck(item.$key, item.isChecked)">
-                              <i class="fa fa-1g" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+                           <span class="hover-cursor" [class.text-success]="item.IsChecked"
+                                  (click)="alterCheck(item.$key, item.IsChecked)">
+                              <i class="fa fa-1g" [ngClass]="item.IsChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
                            </span>
                       </div>
-                      <div class="ToDoTitle" [ngClass]="item.isChecked?'line-through':''">
+                      <div class="ToDoTitle" [ngClass]="item.IsChecked?'line-through':''">
                         {{item.Title}}
                       </div>
                       <div class="ToDoDateTime">
-                        {{item.Date| date: 'dd MMM'}} • {{item.Time}}
+                        {{item.DateTime| date: 'dd MMM'}} • <span class="ToLowerCase">{{item.DateTime| date: 'h a'}}</span>
                       </div>
                     </div>
                     <div class="ToDoHelpPanel d-flex">
@@ -74,16 +74,16 @@
                   <div class="ToDoContainer ">
                     <div class="ToDoMainPanel d-flex justify-content-start">
                       <div class="ToDoCheck">
-                           <span class="hover-cursor" [class.text-success]="item.isChecked"
-                                 (click)="alterCheck(item.$key, item.isChecked)">
-                              <i class="fa fa-1g" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+                           <span class="hover-cursor" [class.text-success]="item.IsChecked"
+                                 (click)="alterCheck(item.$key, item.IsChecked)">
+                              <i class="fa fa-1g" [ngClass]="item.IsChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
                            </span>
                       </div>
-                      <div class="ToDoTitle" [ngClass]="item.isChecked?'line-through':''">
+                      <div class="ToDoTitle" [ngClass]="item.IsChecked?'line-through':''">
                         {{item.Title}}
                       </div>
                       <div class="ToDoDateTime">
-                        {{item.Date| date: 'dd MMM'}} • {{item.Time}}
+                        {{item.DateTime| date: 'dd MMM'}} • <span class="ToLowerCase">{{item.DateTime| date: 'h a'}}</span>
                       </div>
                     </div>
                     <div class="ToDoHelpPanel d-flex">
