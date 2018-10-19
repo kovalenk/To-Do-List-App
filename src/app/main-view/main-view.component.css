@@ -347,8 +347,6 @@ input[type=color]::-webkit-color-swatch-wrapper {
   font-size: 24px;
 }
 
-
-
 .close:focus {
   border: none;
 }
@@ -532,7 +530,7 @@ input[type=color]::-webkit-color-swatch-wrapper {
   top: 46px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-  transition: height .4s ease-in-out;
+  transition: height .4s ease-in-out .3s;
 
 }
 
@@ -544,7 +542,8 @@ input[type=color]::-webkit-color-swatch-wrapper {
   margin: auto;
   height: 1px;
   border-bottom: 1px solid #9797978f;
-  transition: visibility 0s, opacity 0.5s linear;
+  transition-delay: 1s;
+  transition: visibility 0s .15s, opacity 0.5s linear .15s;
 
 }
 
@@ -558,7 +557,8 @@ input[type=color]::-webkit-color-swatch-wrapper {
   font-weight: 500;
   line-height: normal;
   font-size: 14px;
-  transition: visibility 0s, opacity 0.5s linear;
+  transition-delay: 1s;
+  transition: visibility 0s .15s, opacity 0.5s linear .15s
 }
 
 .ToDoHelpViewDetails:hover {
@@ -575,7 +575,7 @@ input[type=color]::-webkit-color-swatch-wrapper {
   padding: 0 6px 0 16px;
   border-left: 1px solid #979797;
   color: #FF5C5C;
-  transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s .15s, opacity 0.5s linear .15s;
 }
 
 .ToDoHelpDeleteIcon {

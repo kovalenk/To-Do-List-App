@@ -68,7 +68,10 @@ export class MainViewComponent implements OnInit {
           }
         });
         this.ToDoMonthly.sort((a, b) => {
-          return a.DateTime - b.DateTime;
+          const AToDoDays = new Date(a.DateTime).getDate();
+          const BToDoDays = new Date(b.DateTime).getDate();
+          console.log(AToDoDays, BToDoDays);
+          return AToDoDays - BToDoDays;
         });
         this.ToDoMonthly.sort((a, b) => {
           return a.IsChecked - b.IsChecked;

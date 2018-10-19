@@ -1,19 +1,50 @@
-.top{
-  height: 300px;
+@font-face {
+  font-family: Raleway;
+  src: url(//fonts.googleapis.com/css?family=Raleway);
 }
-.skip p{
+
+.hover-cursor {
+  cursor: pointer;
+}
+
+.Main {
+  position: relative;
+  height: 667px;
+  background: #ffffff;
+}
+
+.top {
+  height: 295px;
+}
+
+.skip {
+  height: 13px;
   position: absolute;
+  top: calc(50% - 13px / 2 - 300px);
   left: 80.27%;
   right: 12.53%;
-
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: black;
 }
-.greeting p{
+
+.skip a {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 11px;
+  letter-spacing: 1px;
+
+  color: #373737;
+}
+
+.greeting {
+  position: absolute;
+  width: 44%;
+  height: 17px;
+  left: 28%;
+  right: 28%;
+  top: calc(50% - 17px / 2 - 157px);
+
+  font-family: Raleway;
   font-style: normal;
   font-weight: normal;
   line-height: normal;
@@ -22,12 +53,50 @@
 
   color: #050505;
 }
-.logo h1{
-  font-weight: 900;
-  color: #050505;
+
+.logo {
+  position: absolute;
+  height: 32px;
+  top: 31.18%;
+  /*bottom: 64.02%;*/
+
+  background-color: #b34b4a;
 }
-.SliderSize{
+.logo img{
+  padding: 0 25%;
+}
+.slider {
+  position: absolute;
+  width: 285px;
+  height: 46px;
+  left: 12.53%;
+  right: 11.47%;
+  top: calc(50% - 46px / 2 + 26.6px);
+}
+
+.SliderSize {
   height: 133px;
+}
+.carousel-item {
+  margin-top: -36px;
+}
+.carousel-caption {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+.carousel-indicators{
+  position: absolute;
+  right: 0;
+  bottom: 14px;
+  left: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
 }
 .carousel-indicators > li {
   width: 8px;
@@ -35,37 +104,58 @@
   border-radius: 50%;
   border: 1px solid rgba(131, 136, 151, 0.590438);
 }
+
 .carousel-indicators .active {
   background-color: #5A95FF;
 }
-.CarouserText{
+
+.CarouserText {
+  width: 285px;
+  height: 46px;
+
+  font-family: Raleway;
   font-style: normal;
   font-weight: normal;
   line-height: 23px;
   font-size: 14px;
   text-align: center;
+
   color: #050505;
 }
-.fasebook{
-  margin: auto;
-  width: 280px;
-  height: 50px;
+
+.SignInMedia {
+  position: absolute;
+  left: 12.8%;
+  right: 12.53%;
+  top: 78.71%;
+  bottom: 4.05%;
+}
+
+.fasebook {
+  position: absolute;
+  left: 12.8%;
+  right: 12.53%;
+  top: 78.71%;
+  bottom: 13.79%;
+
   background: #3B5798;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(59, 87, 152, 0.115149);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(59, 87, 152, 0.115149);
   border-radius: 3px;
 }
-.twitter{
-  margin: auto;
-  width: 280px;
-  height: 50px;
+
+.twitter {
+  position: absolute;
+  left: 12.8%;
+  right: 12.53%;
+  top: 88.46%;
+  bottom: 4.05%;
+
   background: #59DCFF;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(80, 199, 227, 0.130293);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(80, 199, 227, 0.130293);
   border-radius: 3px;
 }
-.SignInMedia{
-  margin-top: 90px;
-}
-.FbIconCont{
+
+.FbIconCont {
   width: 50px;
   height: 50px;
   background: #283B68;
@@ -73,7 +163,8 @@
   color: white;
   font-size: 17px;
 }
-.TwIconCont{
+
+.TwIconCont {
   width: 50px;
   height: 50px;
   background: #51B2E0;
@@ -81,17 +172,21 @@
   color: white;
   font-size: 17px;
 }
-.LabelCont{
+
+.LabelCont {
+  padding-top: 5px;
+
+  font-family: Raleway;
   font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   line-height: normal;
   font-size: 11px;
   letter-spacing: 1px;
-
+  text-transform: uppercase;
   color: #FFFFFF;
-  text-transform:uppercase;
 }
-.LabelCont p{
+
+.LabelCont p {
   padding-left: 20px;
   height: 0;
 }
