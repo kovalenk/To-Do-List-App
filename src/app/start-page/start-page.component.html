@@ -1,72 +1,61 @@
-<div class="container-fluid">
-  <div class="Main row">
-    <div class="row d-flex">
-      <div class="skip">
-        <a routerLink="/main">Skip</a>
-      </div>
-    </div>
-    <div class="row d-flex">
-      <div class="greeting">
-        <p class="text-center">Hi there! Welcome to</p>
-      </div>
-    </div>
-    <div class="row d-flex">
-        <h1 class="text-center">TTD</h1>
-    </div>
-    <div class="row d-flex">
-      <div class="slider">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="SliderSize">
-                <div class="carousel-caption d-md-block">
-                  <p class="CarouserText">Very simple Things To-Do List. Helps you to
-                    manage yourdaily life, without any hassle!</p>
-                </div>
+<div class="main-body">
+  <div class="skip">
+    <a routerLink="/main">Skip</a>
+  </div>
+  <div class="greeting d-flex justify-content-center">
+    <p>Hi there! Welcome to</p>
+  </div>
+  <div class="logo d-flex justify-content-center">
+      <img src="../../assets/logo.svg" alt="logo" width="102" height="32">
+  </div>
+  <div class="slider d-flex justify-content-center">
+      <div id="slideNext" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="slider-size">
+              <div class="carousel-caption d-flex justify-content-center">
+                <p class="carousel-text">Very simple Things To-Do List. Helps you to
+                  manage yourdaily life, without any hassle!</p>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="SliderSize">
-
-                <div class="carousel-caption d-md-block">
-                  <p class="CarouserText">Very simple Things To-Do List. Helps you to
-                    manage yourdaily life, without any hassle!</p>
-                </div>
+          </div>
+          <div class="carousel-item">
+            <div class="slider-size">
+              <div class="carousel-caption d-flex justify-content-center">
+                <p class="carousel-text">Very simple Things To-Do List. Helps you to
+                  manage yourdaily life, without any hassle!</p>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="SliderSize">
-                <div class="carousel-caption d-md-block">
-                  <p class="CarouserText">Very simple Things To-Do List. Helps you to
-                    manage yourdaily life, without any hassle!</p>
-                </div>
+          </div>
+          <div class="carousel-item">
+            <div class="slider-size">
+              <div class="carousel-caption d-flex justify-content-center">
+                <p class="carousel-text">Very simple Things To-Do List. Helps you to
+                  manage yourdaily life, without any hassle!</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <ol class="carousel-indicators">
+          <li data-target="#slideNext" data-slide-to="0" class="active"></li>
+          <li data-target="#slideNext" data-slide-to="1"></li>
+          <li data-target="#slideNext" data-slide-to="2"></li>
+        </ol>
     </div>
-    <div class="row d-flex">
-      <div class="signInMedia">
-        <div class="fasebook">
-          <div class="d-flex">
-            <div class="FbIconCont d-flex justify-content-center">
-              <i class="align-self-center fa fa-facebook-f"></i></div>
-            <div class="LabelCont d-flex justify-content-center"><p class="align-self-center">fasebook</p></div>
-          </div>
-        </div>
-        <div class="twitter">
-          <div class="d-flex">
-            <div class="TwIconCont d-flex justify-content-center"><i class="align-self-center fa fa-twitter"></i></div>
-            <div class="LabelCont d-flex justify-content-center"><p class="align-self-center">twitter</p></div>
-          </div>
+  </div>
+  <div class="login-medias d-flex justify-content-center">
+      <div class="fasebook">
+        <div class="d-flex">
+          <div class="fasebook-ico d-flex justify-content-center">
+            <i class="align-self-center fa fa-facebook-f"></i></div>
+          <div class="label-container d-flex justify-content-center"><p class="align-self-center">fasebook</p></div>
         </div>
       </div>
-    </div>
+      <div class="twitter">
+        <div class="d-flex">
+          <div class="twitter-ico d-flex justify-content-center"><i class="align-self-center fa fa-twitter"></i></div>
+          <div class="label-container d-flex justify-content-center"><p class="align-self-center">twitter</p></div>
+        </div>
+      </div>
   </div>
 </div>

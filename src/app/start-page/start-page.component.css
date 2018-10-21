@@ -3,30 +3,36 @@
   src: url(//fonts.googleapis.com/css?family=Raleway);
 }
 
-.hover-cursor {
-  cursor: pointer;
-}
-
-.Main {
+.main-body {
   position: relative;
   height: 667px;
   background: #ffffff;
 }
-
-.top {
-  height: 295px;
-}
-
+/*======================================================================*/
+/*.main-body {*/
+  /*position: relative;*/
+  /*height: 540px;*/
+  /*background: #ffffff;*/
+  /*overflow: hidden;*/
+/*}*/
+/*.skip {*/
+  /*height: 13px;*/
+  /*position: absolute;*/
+  /*top: calc(50% - 13px / 2 - 300px);*/
+  /*left: 80.27%;*/
+  /*right: 12.53%;*/
+/*}*/
+/*======================================================================*/
 .skip {
+  display: flex;
   height: 13px;
   position: absolute;
-  top: calc(50% - 13px / 2 - 300px);
+  top: calc(50% - 13px/2 - 300px);
   left: 80.27%;
   right: 12.53%;
 }
-
 .skip a {
-  font-family: Raleway;
+  font-family: 'Raleway', serif;
   font-style: normal;
   font-weight: bold;
   line-height: normal;
@@ -38,13 +44,11 @@
 
 .greeting {
   position: absolute;
-  width: 44%;
+  width: 100%;
   height: 17px;
-  left: 28%;
-  right: 28%;
   top: calc(50% - 17px / 2 - 157px);
 
-  font-family: Raleway;
+  font-family: 'Raleway', serif;
   font-style: normal;
   font-weight: normal;
   line-height: normal;
@@ -56,40 +60,39 @@
 
 .logo {
   position: absolute;
-  height: 32px;
-  top: 31.18%;
-  /*bottom: 64.02%;*/
+  top: calc(50% - 309px/2 + 27px);
+  width: 100%;
+}
 
-  background-color: #b34b4a;
-}
-.logo img{
-  padding: 0 25%;
-}
 .slider {
   position: absolute;
-  width: 285px;
+  width: 100%;
   height: 46px;
-  left: 12.53%;
-  right: 11.47%;
-  top: calc(50% - 46px / 2 + 26.6px);
+  top: calc(50% - 46px / 2 + 27px);
 }
 
-.SliderSize {
+.slider-size {
   height: 133px;
 }
+
+.carousel {
+  width: 100%;
+  position: relative;
+}
+
 .carousel-item {
   margin-top: -36px;
 }
+
 .carousel-caption {
   position: absolute;
   right: 0;
   left: 0;
 }
-.carousel-indicators{
+
+.carousel-indicators {
   position: absolute;
-  right: 0;
-  bottom: 14px;
-  left: 0;
+  top: 62px;
   z-index: 15;
   display: flex;
   justify-content: center;
@@ -98,6 +101,7 @@
   margin-left: 15%;
   list-style: none;
 }
+
 .carousel-indicators > li {
   width: 8px;
   height: 8px;
@@ -109,11 +113,11 @@
   background-color: #5A95FF;
 }
 
-.CarouserText {
+.carousel-text {
   width: 285px;
   height: 46px;
 
-  font-family: Raleway;
+  font-family: 'Raleway', serif;
   font-style: normal;
   font-weight: normal;
   line-height: 23px;
@@ -123,39 +127,24 @@
   color: #050505;
 }
 
-.SignInMedia {
+.login-medias {
+  width: 100%;
+  height: 115px;
   position: absolute;
-  left: 12.8%;
-  right: 12.53%;
   top: 78.71%;
   bottom: 4.05%;
 }
 
 .fasebook {
   position: absolute;
-  left: 12.8%;
-  right: 12.53%;
-  top: 78.71%;
-  bottom: 13.79%;
-
+  top: 0;
+  width: 280px;
+  height: 50px;
   background: #3B5798;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(59, 87, 152, 0.115149);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(59, 87, 152, 0.115149);
   border-radius: 3px;
 }
-
-.twitter {
-  position: absolute;
-  left: 12.8%;
-  right: 12.53%;
-  top: 88.46%;
-  bottom: 4.05%;
-
-  background: #59DCFF;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(80, 199, 227, 0.130293);
-  border-radius: 3px;
-}
-
-.FbIconCont {
+.fasebook-ico {
   width: 50px;
   height: 50px;
   background: #283B68;
@@ -164,7 +153,17 @@
   font-size: 17px;
 }
 
-.TwIconCont {
+.twitter {
+  position: absolute;
+  top: 65px;
+  width: 280px;
+  height: 50px;
+  background: #59DCFF;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(80, 199, 227, 0.130293);
+  border-radius: 3px;
+}
+
+.twitter-ico {
   width: 50px;
   height: 50px;
   background: #51B2E0;
@@ -173,10 +172,10 @@
   font-size: 17px;
 }
 
-.LabelCont {
-  padding-top: 5px;
+.label-container {
+  padding: 18px 23px;
 
-  font-family: Raleway;
+  font-family: 'Raleway', serif;
   font-style: normal;
   font-weight: bold;
   line-height: normal;
@@ -184,9 +183,4 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #FFFFFF;
-}
-
-.LabelCont p {
-  padding-left: 20px;
-  height: 0;
 }
