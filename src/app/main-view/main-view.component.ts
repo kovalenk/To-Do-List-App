@@ -8,23 +8,23 @@ import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./main-view.component.css'],
 })
 export class MainViewComponent implements OnInit {
-  Monthly = true;
-  ToDoMonthly: any[];
-  ToDoDaily: any[];
-  DeleteId: any;
-  Title: any;
-  DateTime: any;
-  Description: any;
-  Checked: any;
-  Color: any;
+  monthly = true;
+  daily_tasks: any[];
+  monthly_tasks: any[];
+  deleteId: any;
+  title: any;
+  dateTime: any;
+  description: any;
+  checked: any;
+  color: any;
   date: any;
-  Time: any;
   modalDelete: any;
   modalAdd: any;
   constructor(
     private toDoService: TodoService,
     private modalService: NgbModal
   ) {
+    console.log(window.location.href);
     NgbModalRef.prototype['c'] = NgbModalRef.prototype.close;
     NgbModalRef.prototype.close = function(reason: string) {
       document.querySelector('.modal-backdrop').classList.remove('show');
@@ -45,49 +45,49 @@ export class MainViewComponent implements OnInit {
 
   ngOnInit() {
     this.date = new Date();
-    const MonthNow = this.date.getMonth() + 1;
-    const DayNow = this.date.getDate();
+    const monthNow = this.date.getMonth() + 1;
+    const dayNow = this.date.getDate();
     this.toDoService
       .getToDoList()
       .snapshotChanges()
       .subscribe(item => {
-        this.ToDoDaily = [];
-        this.ToDoMonthly = [];
+        this.daily_tasks = [];
+        this.monthly_tasks = [];
         item.forEach(element => {
           const x: any = element.payload.toJSON();
-          const ToDoDate = new Date(x.DateTime);
-          const ToDoMonth = ToDoDate.getMonth() + 1;
-          const ToDoDay = ToDoDate.getDate();
-          if (ToDoDay === DayNow) {
-            x['$key'] = element.key;
-            this.ToDoDaily.push(x);
+          const taskDate = new Date(x.dateTime);
+          const taskMonth = taskDate.getMonth() + 1;
+          const taskDay = taskDate.getDate();
+          if (taskDay === dayNow) {
+            x['id'] = element.key;
+            this.daily_tasks.push(x);
           }
-          if (ToDoMonth === MonthNow) {
-            x['$key'] = element.key;
-            this.ToDoMonthly.push(x);
+          if (taskMonth === monthNow) {
+            x['id'] = element.key;
+            this.monthly_tasks.push(x);
           }
         });
-        this.ToDoMonthly.sort((a, b) => {
-          const AToDoDays = new Date(a.DateTime).getDate();
-          const BToDoDays = new Date(b.DateTime).getDate();
+        this.monthly_tasks.sort((a, b) => {
+          const AToDoDays = new Date(a.dateTime).getDate();
+          const BToDoDays = new Date(b.dateTime).getDate();
           console.log(AToDoDays, BToDoDays);
           return AToDoDays - BToDoDays;
         });
-        this.ToDoMonthly.sort((a, b) => {
-          return a.IsChecked - b.IsChecked;
-        });
-        this.ToDoDaily.sort((a, b) => {
-          const AToDoHours = new Date(a.DateTime).getHours();
-          const BToDoHours = new Date(b.DateTime).getHours();
+        // this.monthly_tasks.sort((a, b) => {
+        //   return a.IsChecked - b.IsChecked;
+        // });
+        this.daily_tasks.sort((a, b) => {
+          const AToDoHours = new Date(a.dateTime).getHours();
+          const BToDoHours = new Date(b.dateTime).getHours();
           return AToDoHours - BToDoHours;
         });
-        this.ToDoDaily.sort((a, b) => {
-          return a.IsChecked - b.IsChecked;
-        });
+        // this.daily_tasks.sort((a, b) => {
+        //   return a.IsChecked - b.IsChecked;
+        // });
       });
   }
 
-  AddNewTask(e) {
+  addNewTask(e) {
     const Form = [];
     Form.push(e.srcElement[0].value);
     Form.push(e.srcElement[1].value);
@@ -99,13 +99,13 @@ export class MainViewComponent implements OnInit {
     return false;
   }
 
-  deleteModal(key: any, content) {
-    this.Title = key.Title;
-    this.DeleteId = key.$key;
-    this.DateTime = key.DateTime;
-    this.Description = key.Description;
-    this.Color = key.Color;
-    this.Checked = key.IsChecked;
+  deleteModal(info: any, content) {
+    this.title = info.title;
+    this.deleteId = info.id;
+    this.dateTime = info.dateTime;
+    this.description = info.description;
+    this.color = info.color;
+    this.checked = info.checked;
     this.modalDelete = this.modalService.open(content, {centered: true});
   }
 
@@ -113,16 +113,16 @@ export class MainViewComponent implements OnInit {
     this.modalAdd = this.modalService.open(content, {centered: true});
   }
 
-  alterCheck($key: string, IsChecked) {
-    this.toDoService.checkOrUnCheckToDo($key, !IsChecked);
+  alterCheck(id: string, checked) {
+    this.toDoService.checkOrUnCheckToDo(id, !checked);
   }
 
-  onDelete(DeleteId: any) {
-    this.toDoService.removeToDo(DeleteId);
+  onDelete(deleteId: any) {
+    this.toDoService.removeToDo(deleteId);
     this.modalDelete.close();
   }
 
   switchDaily(status) {
-    this.Monthly = status;
+    this.monthly = status;
   }
 }

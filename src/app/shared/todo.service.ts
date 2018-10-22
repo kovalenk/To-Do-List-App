@@ -13,25 +13,25 @@ export class TodoService {
   }
 
   addNewToDo(form) {
-    const Time = new Date().getHours();
-    const Fulldate: any = new Date(form[2]);
-    Fulldate.setHours(Time);
-    const ParseTime = Date.parse(Fulldate);
+    const hours = new Date().getHours();
+    const date: any = new Date(form[2]);
+    date.setHours(hours);
+    const parseTime = Date.parse(date);
     this.toDoList.push({
-      Title: form[0],
-      Description: form[1],
-      DateTime: ParseTime,
-      Notification: form[3],
-      Color: form[4],
-      IsChecked: false,
+      title: form[0],
+      description: form[1],
+      dateTime: parseTime,
+      notification: form[3],
+      color: form[4],
+      checked: false,
     });
   }
 
-  checkOrUnCheckToDo($key: string, flag: boolean) {
-    this.toDoList.update($key, {IsChecked: flag});
+  checkOrUnCheckToDo(id: string, flag: boolean) {
+    this.toDoList.update(id, {checked: flag});
   }
 
-  removeToDo($key: string) {
-    this.toDoList.remove($key);
+  removeToDo(id: string) {
+    this.toDoList.remove(id);
   }
 }
