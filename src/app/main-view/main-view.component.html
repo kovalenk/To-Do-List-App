@@ -1,6 +1,6 @@
 <div class="main-body">
   <div class="logo d-flex justify-content-center">
-    <img src="../../assets/logo.svg" alt="logo" width="102" height="32">
+    <img src="../../assets/logo.svg" alt="logo" width="47" height="15">
   </div>
   <div class="switch-container d-flex justify-content-center">
     <div class="switch">
@@ -23,16 +23,16 @@
             <div class="task-check">
               <div *ngIf="item.checked== '0'; else checked">
                 <img src="../../assets/Bitmap-default.svg" alt="check" width="16" height="16"
-                     (click)="alterCheck(item.id, item.checked)">
+                     (click)="toggleCheck(item.id, item.checked)">
               </div>
               <ng-template #checked>
                 <img src="../../assets/Bitmap-check.svg" alt="check" width="16" height="16"
-                     (click)="alterCheck(item.id, item.checked)">
+                     (click)="toggleCheck(item.id, item.checked)">
               </ng-template>
             </div>
             <div class="task-group">
               <div class="task-title">
-                <p class="task-title-hover">{{item.title}}</p>
+                <p class="task-title-hover" [ngClass]="item.checked?'line-through':''">{{item.title}}</p>
                 <div class="help-view">
                   <div class="help-group">
                     <div class="help-details">
@@ -56,7 +56,7 @@
     </div>
     <div *ngIf="!monthly">
       <div class="daily-view d-flex  justify-content-start">
-        <p> {{date| date: 'dd MMMM yyyy' }}</p>
+        <p> {{dateNow| date: 'dd MMMM yyyy' }}</p>
         <img class="daily-view-img" src="../../assets/Calendar.svg" alt="Calendar" width="29" height="29">
       </div>
       <div class="tasks-list">
@@ -65,16 +65,16 @@
             <div class="task-check">
               <div *ngIf="item.checked== '0'; else checked">
                 <img src="../../assets/Bitmap-default.svg" alt="check" width="16" height="16"
-                     (click)="alterCheck(item.id, item.checked)">
+                     (click)="toggleCheck(item.id, item.checked)">
               </div>
               <ng-template #checked>
                 <img src="../../assets/Bitmap-check.svg" alt="check" width="16" height="16"
-                     (click)="alterCheck(item.id, item.checked)">
+                     (click)="toggleCheck(item.id, item.checked)">
               </ng-template>
             </div>
             <div class="task-group">
               <div class="task-title">
-                <p class="task-title-hover">{{item.title}}</p>
+                <p class="task-title-hover" [ngClass]="item.checked?'line-through':''">{{item.title}}</p>
                 <div class="help-view">
                   <div class="help-group">
                     <div class="help-details">
@@ -103,18 +103,18 @@
         <img src="../../assets/plus.svg" alt="plus" width="24" height="24"></div>
     </div>
     <div class="footer-display d-flex">
-      <div class="display-list d-flex justify-content-center">
+      <a class="display-list d-flex justify-content-center" href="">
         <img src="../../assets/list.svg" alt="list">
-      </div>
-      <div class="display-clock d-flex justify-content-center">
+      </a>
+      <a class="display-clock d-flex justify-content-center" href="">
         <img src="../../assets/clock.svg" alt="clock">
-      </div>
-      <div class="display-bell d-flex justify-content-center">
+      </a>
+      <a class="display-bell d-flex justify-content-center" href="">
         <img src="../../assets/bell.svg" alt="bell">
-      </div>
-      <div class="display-user d-flex justify-content-center">
+      </a>
+      <a class="display-user d-flex justify-content-center" href="">
         <img src="../../assets/user.svg" alt="user">
-      </div>
+      </a>
     </div>
   </div>
 </div>
@@ -145,7 +145,7 @@
     </div>
   </div>
   <div class="view-m-footer modal-footer">
-    <div class="view-m-button d-flex justify-content-center align-items-center">
+    <div class="view-m-button d-flex justify-content-center align-items-center" (click)="modal.dismiss('Cross click')">
       <p>Close</p>
     </div>
   </div>
@@ -187,37 +187,37 @@
 </ng-template>
 
 <ng-template #AddModal let-modal>
-  <form (submit)="addNewTask($event)">
-    <div class="add-m-header modal-header d-flex justify-content-start">
-      <p class="add-m-title"> Create New Tasts</p>
-      <div class="horizontal-line"></div>
-    </div>
-    <div class="add-m-body modal-body">
+
+  <div class="add-m-header modal-header d-flex justify-content-start">
+    <p class="add-m-title"> Create New Tasts</p>
+    <div class="horizontal-line"></div>
+  </div>
+  <div class="add-m-body modal-body">
+    <form [formGroup]="addForm">
       <div class="add-m-topic">
-          <p> Topic</p>
-          <input type="text" class=" form-control" name="title" placeholder="Write Topic">
+        <p> Topic</p>
+        <input type="text" class=" form-control" formControlName="form_title" placeholder="Write Topic">
       </div>
       <div class="add-m-description">
         <p> Description</p>
-        <input type="text" class=" form-control" name="description" placeholder="Write Description">
+        <input type="text" class=" form-control" formControlName="form_description" placeholder="Write Description">
       </div>
       <div class="add-m-date">
-        <input type="date" class=" form-control" name="date" placeholder="">
+        <input type="date" class=" form-control" formControlName="form_date" placeholder="">
       </div>
       <div class="add-m-notify">
         <p> Notification</p>
-        <input type="text" class="form-control" placeholder="10 mins before">
+        <input type="text" class="form-control" formControlName="form_notify" placeholder="10 mins before">
       </div>
       <div class="add-m-color">
         <p> Choose color</p>
-        <input type="color" class="form-control" value="#50DBE3" placeholder="">
+        <input type="color" class="form-control" formControlName="form_color" placeholder="">
       </div>
+    </form>
+  </div>
+  <div class="add-m-footer modal-footer">
+    <div class="add-m-button d-flex justify-content-center align-items-center" (click)="addNewTask(addForm)">
+      <p>Add</p>
     </div>
-    <div class="add-m-footer modal-footer">
-      <!--<div class="add-m-button d-flex justify-content-center align-items-center">-->
-        <!--<p>Add</p>-->
-      <!--</div>-->
-      <input type="submit" class="add-m-button" value="Add">
-    </div>
-  </form>
+  </div>
 </ng-template>

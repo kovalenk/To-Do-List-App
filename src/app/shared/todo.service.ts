@@ -7,31 +7,30 @@ export class TodoService {
   toDoList: any;
   constructor(private firebasedb: AngularFireDatabase) {}
 
-  getToDoList() {
+  getTasksList() {
     this.toDoList = this.firebasedb.list('Tasks');
     return this.toDoList;
   }
 
-  addNewToDo(form) {
-    const hours = new Date().getHours();
-    const date: any = new Date(form[2]);
-    date.setHours(hours);
+  addTask(value) {
+    const date: any = new Date(value.form_date);
+    date.setHours(new Date().getHours());
     const parseTime = Date.parse(date);
     this.toDoList.push({
-      title: form[0],
-      description: form[1],
+      title: value.form_title,
+      description: value.form_description,
       dateTime: parseTime,
-      notification: form[3],
-      color: form[4],
+      notification: value.form_notify,
+      color: value.form_color,
       checked: false,
     });
   }
 
-  checkOrUnCheckToDo(id: string, flag: boolean) {
+  toggleTask(id: string, flag: boolean) {
     this.toDoList.update(id, {checked: flag});
   }
 
-  removeToDo(id: string) {
+  removeTask(id: string) {
     this.toDoList.remove(id);
   }
 }

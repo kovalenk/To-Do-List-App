@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoService} from '../shared/todo.service';
-import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-main-view',
@@ -8,6 +9,13 @@ import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./main-view.component.css'],
 })
 export class MainViewComponent implements OnInit {
+  addForm = new FormGroup({
+    form_title: new FormControl(''),
+    form_description: new FormControl(''),
+    form_date: new FormControl(''),
+    form_notify: new FormControl(''),
+    form_color: new FormControl('#50DBE3')
+  });
   monthly = true;
   daily_tasks: any[];
   monthly_tasks: any[];
@@ -17,38 +25,20 @@ export class MainViewComponent implements OnInit {
   description: any;
   checked: any;
   color: any;
-  date: any;
+  dateNow: any;
   modalDelete: any;
   modalAdd: any;
   constructor(
     private toDoService: TodoService,
     private modalService: NgbModal
-  ) {
-    console.log(window.location.href);
-    NgbModalRef.prototype['c'] = NgbModalRef.prototype.close;
-    NgbModalRef.prototype.close = function(reason: string) {
-      document.querySelector('.modal-backdrop').classList.remove('show');
-      document.querySelector('.modal').classList.remove('show');
-      setTimeout(() => {
-        this['c'](reason);
-      }, 500);
-    };
-    NgbModalRef.prototype['d'] = NgbModalRef.prototype.dismiss;
-    NgbModalRef.prototype.dismiss = function(reason: string) {
-      document.querySelector('.modal-backdrop').classList.remove('show');
-      document.querySelector('.modal').classList.remove('show');
-      setTimeout(() => {
-        this['d'](reason);
-      }, 500);
-    };
-  }
+  ) {}
 
   ngOnInit() {
-    this.date = new Date();
-    const monthNow = this.date.getMonth() + 1;
-    const dayNow = this.date.getDate();
+    this.dateNow = new Date();
+    const monthNow = this.dateNow.getMonth() + 1;
+    const dayNow = this.dateNow.getDate();
     this.toDoService
-      .getToDoList()
+      .getTasksList()
       .snapshotChanges()
       .subscribe(item => {
         this.daily_tasks = [];
@@ -68,35 +58,18 @@ export class MainViewComponent implements OnInit {
           }
         });
         this.monthly_tasks.sort((a, b) => {
-          const AToDoDays = new Date(a.dateTime).getDate();
-          const BToDoDays = new Date(b.dateTime).getDate();
-          console.log(AToDoDays, BToDoDays);
-          return AToDoDays - BToDoDays;
+          return new Date(a.dateTime).getDate() - new Date(b.dateTime).getDate();
         });
-        // this.monthly_tasks.sort((a, b) => {
-        //   return a.IsChecked - b.IsChecked;
-        // });
         this.daily_tasks.sort((a, b) => {
-          const AToDoHours = new Date(a.dateTime).getHours();
-          const BToDoHours = new Date(b.dateTime).getHours();
-          return AToDoHours - BToDoHours;
+          return new Date(a.dateTime).getHours() - new Date(b.dateTime).getHours();
         });
-        // this.daily_tasks.sort((a, b) => {
-        //   return a.IsChecked - b.IsChecked;
-        // });
+        console.table(this.monthly_tasks);
       });
   }
 
-  addNewTask(e) {
-    const Form = [];
-    Form.push(e.srcElement[0].value);
-    Form.push(e.srcElement[1].value);
-    Form.push(e.srcElement[2].value);
-    Form.push(e.srcElement[3].value);
-    Form.push(e.srcElement[4].value);
-    this.toDoService.addNewToDo(Form);
+  addNewTask(form) {
+    this.toDoService.addTask(form.value);
     this.modalAdd.close();
-    return false;
   }
 
   deleteModal(info: any, content) {
@@ -113,12 +86,12 @@ export class MainViewComponent implements OnInit {
     this.modalAdd = this.modalService.open(content, {centered: true});
   }
 
-  alterCheck(id: string, checked) {
-    this.toDoService.checkOrUnCheckToDo(id, !checked);
+  toggleCheck(id: string, checked) {
+    this.toDoService.toggleTask(id, !checked);
   }
 
   onDelete(deleteId: any) {
-    this.toDoService.removeToDo(deleteId);
+    this.toDoService.removeTask(deleteId);
     this.modalDelete.close();
   }
 

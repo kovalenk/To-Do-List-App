@@ -5,33 +5,20 @@
 
 .main-body {
   position: relative;
-  height: 667px;
+  height: -webkit-fill-available;
   background: #ffffff;
 }
-/*======================================================================*/
-/*.main-body {*/
-  /*position: relative;*/
-  /*height: 540px;*/
-  /*background: #ffffff;*/
-  /*overflow: hidden;*/
-/*}*/
-/*.skip {*/
-  /*height: 13px;*/
-  /*position: absolute;*/
-  /*top: calc(50% - 13px / 2 - 300px);*/
-  /*left: 80.27%;*/
-  /*right: 12.53%;*/
-/*}*/
-/*======================================================================*/
 .skip {
-  display: flex;
-  height: 13px;
+  width: 100%;
+  height: 38px;
   position: absolute;
-  top: calc(50% - 13px/2 - 300px);
-  left: 80.27%;
-  right: 12.53%;
+  top: 0;
+  left: 0;
 }
 .skip a {
+  position: absolute;
+  top:25px;
+  right: 12.53%;
   font-family: 'Raleway', serif;
   font-style: normal;
   font-weight: bold;
@@ -46,7 +33,7 @@
   position: absolute;
   width: 100%;
   height: 17px;
-  top: calc(50% - 17px / 2 - 157px);
+  top: 27.6%;
 
   font-family: 'Raleway', serif;
   font-style: normal;
@@ -60,15 +47,17 @@
 
 .logo {
   position: absolute;
-  top: calc(50% - 309px/2 + 27px);
+  top: 34.3%;
+  left: 0;
   width: 100%;
+  height: 32px;
 }
 
 .slider {
   position: absolute;
   width: 100%;
   height: 46px;
-  top: calc(50% - 46px / 2 + 27px);
+  bottom: 42.8%;
 }
 
 .slider-size {
@@ -131,8 +120,8 @@
   width: 100%;
   height: 115px;
   position: absolute;
-  top: 78.71%;
-  bottom: 4.05%;
+  left: 0;
+  bottom: 4.5%;
 }
 
 .fasebook {
