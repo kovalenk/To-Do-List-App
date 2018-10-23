@@ -27,7 +27,7 @@
 }
 
 .line-through {
-  text-decoration: line-through;
+  text-decoration-line: line-through;
 }
 
 .lower-case {
@@ -119,18 +119,22 @@
 
   color: #050505;
 }
+
 .monthly-view p, .daily-view p {
   width: 60%;
   margin-top: 20px;
 }
-.daily-view-img{
+
+.daily-view-img {
   position: absolute;
   top: 22px;
   right: 25%;
 }
-.task-generation{
+
+.task-generation {
   margin: 1px;
 }
+
 .tasks-list {
   position: absolute;
   top: 60px;
@@ -138,9 +142,11 @@
   height: 100%;
   overflow-y: auto;
 }
-.task-group-li{
+
+.task-group-li {
   display: block;
 }
+
 .task-group {
   display: block;
   position: relative;
@@ -150,16 +156,17 @@
   background-color: white;
   border-radius: 3px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
-  transition: height .35s linear ;
+  transition: height .35s linear;
 }
 
-.margin-hover{
+.margin-hover {
   background-color: #283B68;
   display: block;
   margin-top: -54px;
   width: 70%;
   height: 48px;
 }
+
 .task-check {
   position: absolute;
   left: 15%;
@@ -184,7 +191,7 @@
   font-size: 14px;
   color: #050505;
   z-index: 1;
-  transition: height .4s linear ;
+  transition: height .4s linear;
 }
 
 .task-title p {
@@ -194,15 +201,18 @@
   margin-left: 14%;
   text-align: start;
 }
-.task-group:hover{
+
+.task-group:hover {
   height: 92px;
 }
-.task-title-hover{
+
+.task-title-hover {
   cursor: pointer;
   position: absolute;
   top: 18px;
   padding: 16px 0;
 }
+
 .task-group:hover .help-view {
   visibility: visible;
   opacity: 1
@@ -262,7 +272,7 @@
 
 .task-date {
   position: absolute;
-  width: 43%;
+  width: 44%;
   height: 17px;
   top: 0;
   right: 0;
@@ -347,64 +357,252 @@
   right: 3%;
 }
 
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+.delete-m-header, .view-m-header {
+  width: 100%;
+  height: 50px;
+  border: none;
 }
 
-.ModalTopic label, .ModalDescription label, .ModalDate label, .ModalNotify label, .ModalColor label {
+.delete-m-color, .view-m-color {
+  position: absolute;
+  top: 15px;
+  left: 6%;
+  width: 17px;
+  height: 15px;
+  border: none;
+  background-color: inherit;
+  margin-top: 7px;
+}
+
+.delete-m-title, .view-m-title {
+  position: absolute;
+  left: 13%;
+  top: 18px;
+  background-color: white;
+  padding-right: 20px;
+  font-family: 'Raleway', serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 900;
+  line-height: normal;
+  font-size: 18px;
+  color: #050505;
+  z-index: 1;
+}
+
+.horizontal-line {
+  width: 50%;
+  background-color: #979797;
+  height: 1px;
+  position: absolute;
+  top: 29px;
+  left: 41%;
+}
+
+.delete-m-body, .view-m-body {
+  padding: 3px 16px;
+}
+
+.delete-m-datetime, .view-m-datetime {
+  width: 100%;
+  height: 50px;
+}
+
+.delete-m-datetime img, .view-m-datetime img {
+  position: absolute;
+  top:14px;
+  left: 8%;
+}
+.delete-m-datetime p, .view-m-datetime p{
+  position: absolute;
+  top: 16px;
+  left: 23%;
+  font-family: 'Raleway', serif;
+  font-style: normal;
+  font-weight: 900;
   line-height: normal;
   font-size: 14px;
 
   color: #050505;
 }
+.delete-m-description, .view-m-description{
+  width: 100%;
+  height: auto;
+}
+.delete-m-description p, .view-m-description p{
+  font-family: 'Raleway', serif;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 20px;
+  font-size: 14px;
 
-.ModalDescription input, .ModalDate input, .ModalNotify input, .ModalTopic input {
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid #ced4da;
+  color: #050505;
 }
 
-.ModalColor input {
-  margin-left: 10px;
+.delete-m-check, .view-m-check{
+  position: relative;
+  width: 100%;
+  height: 50px;
+}
+.delete-m-check img, .view-m-check img{
+  position: absolute;
+  top: 14px;
+  left: 5%;
+}
+.delete-m-check p, .view-m-check p{
+  position: absolute;
+  top: 12px;
+  left: 15%;
+  font-family: 'Raleway', serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 14px;
+
+  color: #050505;
+}
+.delete-m-footer, .view-m-footer{
+  border: none;
+}
+.delete-m-button{
+  width: 100%;
+  height: 50px;
+  background-color: #FF5C5C;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.view-m-button{
+  width: 100%;
+  height: 50px;
+  background-color: #ffcf32;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.delete-m-button p, .view-m-button p{
+  margin-top: 18px;
+  margin-left: 14px;
+  font-family: 'Raleway', serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 11px;
+  letter-spacing:1px;
+  color: white;
+}
+.view-m-button p{
+  margin-top: 14px;
+  margin-left: 0;
+  font-size: 12px;
+  color: black;
+}
+.add-m-header{
+  width: 100%;
+  height: 70px;
+  border: none;
+}
+.add-m-header .horizontal-line{
+  left: 44%;
+  top: 34px;
+  height: 3px;
+}
+.add-m-title{
+  position: absolute;
+  left: 8%;
+  top: 20px;
+  background-color: white;
+  padding-right: 15px;
+  font-family: 'Raleway', serif;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  font-size: 24px;
+  color: #050505;
+  z-index: 1;
+}
+.add-m-body{
+  padding: 1px 16px;
+}
+.add-m-topic, .add-m-description, .add-m-date, .add-m-notify, .add-m-color{
+  width: 100%;
+  height: 85px;
+  position: relative;
+}
+.add-m-topic p, .add-m-description p, .add-m-notify p, .add-m-color p{
+  width: 100%;
+  height: 20px;
+
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px 4%;
+
+  font-family: 'Raleway', serif;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  font-size: 14px;
+
+  color: #050505;
+}
+.add-m-topic input, .add-m-description input, .add-m-date input, .add-m-notify input{
+  width: 91%;
+  margin: auto;
+  height: 40px;
+  display: block;
+  position: relative;
+  top: 21px;
+  padding: 2px 0%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #979797;
+  font-family: 'Raleway', serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 14px;
+  color: #050505;
+}
+.add-m-color input{
   width: 30px;
   height: 30px;
   padding: 0;
   border-radius: 50px;
   border: 1px solid #a9a7a7;
+  position: absolute;
+  top: 31px;
+  left: 6.5%;
 }
-
-.modal-footer {
+.add-m-footer{
+  border: none;
+}
+.add-m-button{
+  width: 100%;
+  height: 50px;
+  background-color: #5A95FF;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.add-m-button p{
+  margin-top: 18px;
+  text-transform: uppercase;
+  font-family: 'Raleway', serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: white;
+}
+.modal-footer{
   padding: 0;
 }
-
-.ModalAdd input {
-  text-transform: uppercase;
-  width: 100%;
-  border-radius: unset;
-  height: 50px;
-  background: #5A95FF;
-}
-
-.form-control:focus {
+.form-control:focus{
   box-shadow: none;
 }
-
-.btn-primary:focus {
-  box-shadow: none;
+input::placeholder{
+  opacity: 0.5;
+  font-weight: 100;
 }
-
-.btn-info:focus {
-  box-shadow: none;
-}
-
-.btn-danger:focus {
-  box-shadow: none;
-}
-
 input[type=color]::-webkit-color-swatch {
   border: none;
   border-radius: 50%;
@@ -417,127 +615,6 @@ input[type=color]::-webkit-color-swatch-wrapper {
   padding: 0;
 }
 
-.DeleteData label {
-  padding-left: 20px;
-}
-
-.DeleteData label, .DeleteCheckout label {
-  padding-left: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  font-size: 14px;
-  color: #050505;
-}
-
-.DeleteData i, .DeleteCheckout i {
-  padding-top: 5px;
-  font-size: 28px;
-  position: absolute;
-  top: -7px;
-  left: 0;
-}
-
-.DeleteCheckout i {
-  top: -4px;
-}
-
-.ModalDelete button {
-  width: 100%;
-  border-radius: unset;
-  height: 50px;
-  background: #FF5C5C;
-  padding-top: 9px;
-}
-
-.ModalInfo button {
-  width: 100%;
-  border-radius: unset;
-  height: 50px;
-  background: #ffea7e;
-  padding-top: 9px;
-  color: black;
-  font-weight: 600;
-}
-
-.ModalDelete i {
-  padding-right: 15px;
-  font-size: 24px;
-}
-
-.close:focus {
-  border: none;
-}
-
-.MyClose {
-  float: right;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  opacity: .5;
-  border: none;
-  background-color: inherit;
-}
-
-.MyClose:focus {
-  outline-color: white;
-}
-
-.IcoGreen {
-  color: #5ab35a;
-}
-
-.IcoRed {
-  color: #b34b4a;
-}
-
-.DeleteModalColor {
-  width: 24px;
-  height: 24px;
-  border: none;
-  background-color: inherit;
-  margin-top: 7px;
-}
-
-.modal-header {
-  border: none;
-}
-
-.Horizont {
-  color: red;
-  width: 66%;
-  background-color: #979797;
-  height: 1px;
-  position: absolute;
-  top: 36px;
-  right: 8%;
-}
-
-.DeleteTitle, .AddTitle {
-  margin-left: 10px;
-  background-color: white;
-  padding-right: 6px;
-  z-index: 1;
-}
-
-.DeleteModalBody {
-  padding: 0 30px;
-}
-
-.DayViewCalendar {
-  font-size: 26px;
-  padding: 5px 0 0 40px;
-  position: absolute;
-  right: 15%;
-  color: #808080c7;
-}
-
-.DataArray {
-  height: 445px;
-  overflow-y: auto;
-}
 
 .modal-backdrop {
   opacity: 0.5;
