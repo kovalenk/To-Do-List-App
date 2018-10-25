@@ -3,11 +3,11 @@
     <img src="../../assets/logo.svg" alt="logo" width="47" height="15">
   </div>
   <div class="switch-container d-flex justify-content-center">
-    <div class="switch">
+    <div class="switch" >
       <input type="radio" class="switch-input" name="view" value="Monthly" id="Monthly" checked
              (click)="switchDaily(true)">
       <label for="Monthly" class="switch-label switch-label-off">Monthly</label>
-      <input type="radio" class="switch-input" name="view" value="Daily" id="Daily" (click)="switchDaily(false)">
+      <input type="radio" class="switch-input" name="view" value="Daily" id="Daily" (click)="switchDaily(false)" >
       <label for="Daily" class="switch-label switch-label-on">Daily</label>
       <span class="switch-selection"></span>
     </div>
@@ -99,20 +99,21 @@
   </div>
   <div class="footer-container d-flex">
     <div class="add-button-container d-flex justify-content-center">
-      <div class="add-button justify-content-center align-items-center" (click)="addModal(AddModal)">
+      <div class="add-button justify-content-center align-items-center" (click)="addModal(AddModal)" matRipple
+           [matRippleCentered]=true>
         <img src="../../assets/plus.svg" alt="plus" width="24" height="24"></div>
     </div>
     <div class="footer-display d-flex">
-      <a class="display-list d-flex justify-content-center" href="">
+      <a class="display-list d-flex justify-content-center" matRipple>
         <img src="../../assets/list.svg" alt="list">
       </a>
-      <a class="display-clock d-flex justify-content-center" href="">
+      <a class="display-clock d-flex justify-content-center" matRipple>
         <img src="../../assets/clock.svg" alt="clock">
       </a>
-      <a class="display-bell d-flex justify-content-center" href="">
+      <a class="display-bell d-flex justify-content-center" matRipple>
         <img src="../../assets/bell.svg" alt="bell">
       </a>
-      <a class="display-user d-flex justify-content-center" href="">
+      <a class="display-user d-flex justify-content-center" matRipple>
         <img src="../../assets/user.svg" alt="user">
       </a>
     </div>
@@ -145,7 +146,7 @@
     </div>
   </div>
   <div class="view-m-footer modal-footer">
-    <div class="view-m-button d-flex justify-content-center align-items-center" (click)="modal.dismiss('Cross click')">
+    <div class="view-m-button d-flex justify-content-center align-items-center" matRipple>
       <p>Close</p>
     </div>
   </div>
@@ -179,7 +180,7 @@
   </div>
   <div class="delete-m-footer modal-footer">
     <div class="delete-m-button d-flex justify-content-center align-items-center"
-         (click)="onDelete(deleteId)">
+         (click)="onDelete(deleteId)" matRipple>
       <img src="../../assets/del-w.svg" alt="delete" width="18" height="18">
       <p>Delete</p>
     </div>
@@ -203,7 +204,10 @@
         <input type="text" class=" form-control" formControlName="form_description" placeholder="Write Description">
       </div>
       <div class="add-m-date">
-        <input type="date" class=" form-control" formControlName="form_date" placeholder="">
+        <input matInput formControlName="form_date" [matDatepicker]="picker" placeholder="Input & change events"
+               (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </div>
       <div class="add-m-notify">
         <p> Notification</p>
@@ -216,7 +220,7 @@
     </form>
   </div>
   <div class="add-m-footer modal-footer">
-    <div class="add-m-button d-flex justify-content-center align-items-center" (click)="addNewTask(addForm)">
+    <div class="add-m-button d-flex justify-content-center align-items-center" (click)="addNewTask(addForm)" matRipple>
       <p>Add</p>
     </div>
   </div>

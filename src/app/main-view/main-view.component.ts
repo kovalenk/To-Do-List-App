@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {TodoService} from '../shared/todo.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder} from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-main-view',
@@ -9,12 +10,12 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./main-view.component.css'],
 })
 export class MainViewComponent implements OnInit {
-  addForm = new FormGroup({
-    form_title: new FormControl(''),
-    form_description: new FormControl(''),
-    form_date: new FormControl(''),
-    form_notify: new FormControl(''),
-    form_color: new FormControl('#50DBE3')
+  addForm = this.fb.group({
+    form_title: [''],
+    form_description: [''],
+    form_date: ['04 Feb 2018'],
+    form_notify: [''],
+    form_color: ['#50DBE3']
   });
   monthly = true;
   daily_tasks: any[];
@@ -29,14 +30,13 @@ export class MainViewComponent implements OnInit {
   modalDelete: any;
   modalAdd: any;
   constructor(
+    private fb: FormBuilder,
     private toDoService: TodoService,
     private modalService: NgbModal
-  ) {}
-
+  ) { }
   ngOnInit() {
     this.dateNow = new Date();
-    const monthNow = this.dateNow.getMonth() + 1;
-    const dayNow = this.dateNow.getDate();
+    const [monthNow, dayNow] = [this.dateNow.getMonth() + 1, this.dateNow.getDate()];
     this.toDoService
       .getTasksList()
       .snapshotChanges()
@@ -46,8 +46,7 @@ export class MainViewComponent implements OnInit {
         item.forEach(element => {
           const x: any = element.payload.toJSON();
           const taskDate = new Date(x.dateTime);
-          const taskMonth = taskDate.getMonth() + 1;
-          const taskDay = taskDate.getDate();
+          const [taskMonth, taskDay] = [taskDate.getMonth() + 1, taskDate.getDate()];
           if (taskDay === dayNow) {
             x['id'] = element.key;
             this.daily_tasks.push(x);
@@ -63,13 +62,19 @@ export class MainViewComponent implements OnInit {
         this.daily_tasks.sort((a, b) => {
           return new Date(a.dateTime).getHours() - new Date(b.dateTime).getHours();
         });
-        console.table(this.monthly_tasks);
       });
   }
 
   addNewTask(form) {
     this.toDoService.addTask(form.value);
     this.modalAdd.close();
+    this.addForm.patchValue({
+      form_title: '',
+      form_description: '',
+      form_date: '04 Feb 2018',
+      form_notify: '',
+      form_color: '#50DBE3'
+    });
   }
 
   deleteModal(info: any, content) {

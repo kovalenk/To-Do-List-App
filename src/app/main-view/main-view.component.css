@@ -327,10 +327,9 @@
   background-color: #e4eff6;
   z-index: 4;
 }
-
 .display-list, .display-clock, .display-bell, .display-user {
-  width: 70px;
-  height: 45px;
+  width: 25%;
+  height: 48px;
   font-size: 20px;
   mix-blend-mode: normal;
 }
@@ -338,26 +337,25 @@
 .display-list {
   position: absolute;
   bottom: 0;
-  left: 3%;
+  left: 0;
 }
 
 .display-clock {
   position: absolute;
   bottom: 0;
-  left: 22%;
+  left: 25%;
 }
 
 .display-bell {
-  margin-left: 85px;
   position: absolute;
   bottom: 0;
-  right: 22%;
+  left: 50%;
 }
 
 .display-user {
   position: absolute;
   bottom: 0;
-  right: 3%;
+  left: 75%;
 }
 
 .delete-m-header, .view-m-header {
@@ -566,6 +564,14 @@
   line-height: normal;
   font-size: 14px;
   color: #050505;
+}
+.add-m-date input{
+  outline: none;
+
+}
+.mat-datepicker-toggle{
+  position: absolute;
+  right: 0;
 }
 .add-m-color input{
   width: 30px;
