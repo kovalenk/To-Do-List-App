@@ -1,8 +1,7 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TodoService} from '../shared/todo.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder} from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {ModalDirective} from "angular-bootstrap-md";
 
 @Component({
   selector: 'app-main-view',
@@ -10,6 +9,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./main-view.component.scss'],
 })
 export class MainViewComponent implements OnInit {
+  @ViewChild('viewModal') viewModal: ModalDirective;
+  @ViewChild('deleteModal') deleteModal: ModalDirective;
+  @ViewChild('addModal') addModal: ModalDirective;
   addForm = this.fb.group({
     form_title: [''],
     form_description: [''],
@@ -20,20 +22,12 @@ export class MainViewComponent implements OnInit {
   monthly = true;
   daily_tasks: any[];
   monthly_tasks: any[];
-  deleteId: any;
-  title: any;
-  dateTime: any;
-  description: any;
-  checked: any;
-  color: any;
+  data: {};
   dateNow: any;
-  modalDelete: any;
-  modalAdd: any;
   constructor(
     private fb: FormBuilder,
-    private toDoService: TodoService,
-    private modalService: NgbModal
-  ) { }
+    private toDoService: TodoService) { }
+
   ngOnInit() {
     this.dateNow = new Date();
     const [monthNow, dayNow] = [this.dateNow.getMonth() + 1, this.dateNow.getDate()];
@@ -67,37 +61,32 @@ export class MainViewComponent implements OnInit {
 
   addNewTask(form) {
     this.toDoService.addTask(form.value);
-    this.modalAdd.close();
     this.addForm.patchValue({
       form_title: '',
       form_description: '',
-      form_date: '04 Feb 2018',
+      form_date: '',
       form_notify: '',
       form_color: '#50DBE3'
     });
+    this.addModal.hide();
   }
 
-  deleteModal(info: any, content) {
-    this.title = info.title;
-    this.deleteId = info.id;
-    this.dateTime = info.dateTime;
-    this.description = info.description;
-    this.color = info.color;
-    this.checked = info.checked;
-    this.modalDelete = this.modalService.open(content, {centered: true});
+  modalOpen(item, type) {
+    this.data = item;
+    if(type === "view"){
+      this.viewModal.show();
+    }
+    else{
+      this.deleteModal.show();
+    }
   }
-
-  addModal(content) {
-    this.modalAdd = this.modalService.open(content, {centered: true});
-  }
-
   toggleCheck(id: string, checked) {
     this.toDoService.toggleTask(id, !checked);
   }
 
-  onDelete(deleteId: any) {
+  onDelete(deleteId) {
     this.toDoService.removeTask(deleteId);
-    this.modalDelete.close();
+    this.deleteModal.hide();
   }
 
   switchDaily(status) {

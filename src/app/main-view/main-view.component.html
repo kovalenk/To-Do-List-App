@@ -3,11 +3,11 @@
     <img src="../../assets/logo.svg" alt="logo" width="47" height="15">
   </div>
   <div class="switch-container d-flex justify-content-center">
-    <div class="switch" >
+    <div class="switch">
       <input type="radio" class="switch-input" name="view" value="Monthly" id="Monthly" checked
              (click)="switchDaily(true)">
       <label for="Monthly" class="switch-label switch-label-off">Monthly</label>
-      <input type="radio" class="switch-input" name="view" value="Daily" id="Daily" (click)="switchDaily(false)" >
+      <input type="radio" class="switch-input" name="view" value="Daily" id="Daily" (click)="switchDaily(false)">
       <label for="Daily" class="switch-label switch-label-on">Daily</label>
       <span class="switch-selection"></span>
     </div>
@@ -36,11 +36,11 @@
                 <div class="help-view">
                   <div class="help-group">
                     <div class="help-details">
-                      <p (click)="deleteModal(item, ViewModal)"> View Details</p>
+                      <p (click)="modalOpen(item, 'view')"> View Details</p>
                     </div>
                     <div class="help-delete">
                       <img src="../../assets/del.svg" alt="delete" width="22" height="22"
-                           (click)="deleteModal(item, DeleteModal)">
+                           (click)="modalOpen(item, 'delete')">
                     </div>
                   </div>
                 </div>
@@ -78,11 +78,11 @@
                 <div class="help-view">
                   <div class="help-group">
                     <div class="help-details">
-                      <p (click)="deleteModal(item, ViewModal)"> View Details</p>
+                      <p (click)="modalOpen(item, 'view')"> View Details</p>
                     </div>
                     <div class="help-delete">
                       <img src="../../assets/del.svg" alt="delete" width="22" height="22"
-                           (click)="deleteModal(item, DeleteModal)">
+                           (click)="modalOpen(item, 'delete')">
                     </div>
                   </div>
                 </div>
@@ -99,129 +99,143 @@
   </div>
   <div class="footer-container d-flex">
     <div class="add-button-container d-flex justify-content-center">
-      <div class="add-button justify-content-center align-items-center" (click)="addModal(AddModal)" matRipple
-           [matRippleCentered]=true>
+      <div class="add-button justify-content-center align-items-center" (click)="addModal.show()" mdbWavesEffect>
         <img src="../../assets/plus.svg" alt="plus" width="24" height="24"></div>
     </div>
     <div class="footer-display d-flex">
-      <a class="display-list d-flex justify-content-center" matRipple>
+      <a class="display-list d-flex justify-content-center" mdbWavesEffect>
         <img src="../../assets/list.svg" alt="list">
       </a>
-      <a class="display-clock d-flex justify-content-center" matRipple>
+      <a class="display-clock d-flex justify-content-center" mdbWavesEffect>
         <img src="../../assets/clock.svg" alt="clock">
       </a>
-      <a class="display-bell d-flex justify-content-center" matRipple>
+      <a class="display-bell d-flex justify-content-center" mdbWavesEffect>
         <img src="../../assets/bell.svg" alt="bell">
       </a>
-      <a class="display-user d-flex justify-content-center" matRipple>
+      <a class="display-user d-flex justify-content-center" mdbWavesEffect>
         <img src="../../assets/user.svg" alt="user">
       </a>
     </div>
   </div>
 </div>
-<ng-template #ViewModal let-modal>
-  <div class="view-m-header modal-header d-flex justify-content-start">
-    <input type="color" class="view-m-color" placeholder="" [value]="color" disabled>
-    <p class="view-m-title" [ngClass]="checked?'line-through':''">{{title}}</p>
-    <div class="horizontal-line"></div>
-  </div>
-  <div class="view-m-body modal-body">
-    <div class="view-m-datetime d-flex justify-content-start">
-      <img src="../../assets/Calendar.svg" alt="Calendar" width="25" height="25">
-      <p> {{dateTime| date: 'dd MMM'}} • <span class="lower-case">{{dateTime| date: 'h a'}}</span>
-      </p>
-    </div>
-    <div class="view-m-description d-flex justify-content-start">
-      <p>{{description}}</p>
-    </div>
-    <div class="view-m-check d-flex justify-content-start">
-      <div *ngIf="checked === false; else NonChecked">
-        <img src="../../assets/Bitmap-default.svg" alt="check" width="16" height="16">
-        <p> non completed </p>
-      </div>
-      <ng-template #NonChecked>
-        <img src="../../assets/Bitmap-check.svg" alt="check" width="16" height="16">
-        <p> completed </p>
-      </ng-template>
-    </div>
-  </div>
-  <div class="view-m-footer modal-footer">
-    <div class="view-m-button d-flex justify-content-center align-items-center" matRipple>
-      <p>Close</p>
-    </div>
-  </div>
-</ng-template>
 
-<ng-template #DeleteModal let-modal>
-  <div class="delete-m-header modal-header d-flex justify-content-start">
-    <input type="color" class="delete-m-color" placeholder="" [value]="color" disabled>
-    <p class="delete-m-title" [ngClass]="checked?'line-through':''">{{title}}</p>
-    <div class="horizontal-line"></div>
-  </div>
-  <div class="delete-m-body modal-body">
-    <div class="delete-m-datetime d-flex justify-content-start">
-      <img src="../../assets/Calendar.svg" alt="Calendar" width="25" height="25">
-      <p> {{dateTime| date: 'dd MMM'}} • <span class="lower-case">{{dateTime| date: 'h a'}}</span>
-      </p>
-    </div>
-    <div class="delete-m-description d-flex justify-content-start">
-      <p>{{description}}</p>
-    </div>
-    <div class="delete-m-check d-flex justify-content-start">
-      <div *ngIf="checked === false; else NonChecked">
-        <img src="../../assets/Bitmap-default.svg" alt="check" width="16" height="16">
-        <p> non completed </p>
+<div mdbModal #addModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="add-m-header modal-header d-flex justify-content-start">
+        <p class="add-m-title"> Create New Tasts</p>
+        <div class="horizontal-line"></div>
       </div>
-      <ng-template #NonChecked>
-        <img src="../../assets/Bitmap-check.svg" alt="check" width="16" height="16">
-        <p> completed </p>
-      </ng-template>
+      <div class="add-m-body modal-body">
+        <form [formGroup]="addForm">
+          <div class="add-m-topic">
+            <p> Topic</p>
+            <input type="text" class=" form-control" formControlName="form_title" placeholder="Write Topic">
+          </div>
+          <div class="add-m-description">
+            <p> Description</p>
+            <input type="text" class=" form-control" formControlName="form_description" placeholder="Write Description">
+          </div>
+          <div class="add-m-date">
+            <input type="date" formControlName="form_date">
+            <!--<input matInput formControlName="form_date" [matDatepicker]="picker" placeholder="Input & change events">-->
+            <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+            <!--<mat-datepicker #picker></mat-datepicker>-->
+          </div>
+          <div class="add-m-notify">
+            <p> Notification</p>
+            <input type="text" class="form-control" formControlName="form_notify" placeholder="10 mins before">
+          </div>
+          <div class="add-m-color">
+            <p> Choose color</p>
+            <input type="color" class="form-control" formControlName="form_color" placeholder="">
+          </div>
+        </form>
+      </div>
+      <div class="add-m-footer modal-footer">
+        <div class="add-m-button d-flex justify-content-center align-items-center" (click)="addNewTask(addForm)" mdbWavesEffect>
+          <p>Add</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="delete-m-footer modal-footer">
-    <div class="delete-m-button d-flex justify-content-center align-items-center"
-         (click)="onDelete(deleteId)" matRipple>
-      <img src="../../assets/del-w.svg" alt="delete" width="18" height="18">
-      <p>Delete</p>
+</div>
+<div mdbModal #viewModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" *ngIf="data">
+      <div class="view-m-header modal-header d-flex justify-content-start">
+        <input type="color" class="view-m-color" placeholder="" [value]="data.color" disabled>
+        <p class="view-m-title" [ngClass]="data.checked?'line-through':''">{{data.title}}</p>
+        <div class="horizontal-line"></div>
+      </div>
+      <div class="view-m-body modal-body">
+        <div class="view-m-datetime d-flex justify-content-start">
+          <img src="../../assets/Calendar.svg" alt="Calendar" width="25" height="25">
+          <p> {{data.dateTime| date: 'dd MMM'}} • <span class="lower-case">{{data.dateTime| date: 'h a'}}</span>
+          </p>
+        </div>
+        <div class="view-m-description d-flex justify-content-start">
+          <p>{{data.description}}</p>
+        </div>
+        <div class="view-m-check d-flex justify-content-start">
+          <div *ngIf="data.checked === false; else NonChecked">
+            <img src="../../assets/Bitmap-default.svg" alt="check" width="16" height="16">
+            <p> non completed </p>
+          </div>
+          <ng-template #NonChecked>
+            <img src="../../assets/Bitmap-check.svg" alt="check" width="16" height="16">
+            <p> completed </p>
+          </ng-template>
+        </div>
+      </div>
+      <div class="view-m-footer modal-footer">
+        <div class="view-m-button d-flex justify-content-center align-items-center" mdbWavesEffect
+             (click)="viewModal.hide()">
+          <p>Close</p>
+        </div>
+      </div>
     </div>
   </div>
-</ng-template>
+</div>
 
-<ng-template #AddModal let-modal>
-
-  <div class="add-m-header modal-header d-flex justify-content-start">
-    <p class="add-m-title"> Create New Tasts</p>
-    <div class="horizontal-line"></div>
-  </div>
-  <div class="add-m-body modal-body">
-    <form [formGroup]="addForm">
-      <div class="add-m-topic">
-        <p> Topic</p>
-        <input type="text" class=" form-control" formControlName="form_title" placeholder="Write Topic">
+<div mdbModal #deleteModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" *ngIf="data">
+      <div class="delete-m-header modal-header d-flex justify-content-start">
+        <input type="color" class="delete-m-color" placeholder="" [value]="data.color" disabled>
+        <p class="delete-m-title" [ngClass]="data.checked?'line-through':''">{{data.title}}</p>
+        <div class="horizontal-line"></div>
       </div>
-      <div class="add-m-description">
-        <p> Description</p>
-        <input type="text" class=" form-control" formControlName="form_description" placeholder="Write Description">
+      <div class="delete-m-body modal-body">
+        <div class="delete-m-datetime d-flex justify-content-start">
+          <img src="../../assets/Calendar.svg" alt="Calendar" width="25" height="25">
+          <p> {{data.dateTime| date: 'dd MMM'}} • <span class="lower-case">{{data.dateTime| date: 'h a'}}</span>
+          </p>
+        </div>
+        <div class="delete-m-description d-flex justify-content-start">
+          <p>{{data.description}}</p>
+        </div>
+        <div class="delete-m-check d-flex justify-content-start">
+          <div *ngIf="data.checked === false; else NonChecked">
+            <img src="../../assets/Bitmap-default.svg" alt="check" width="16" height="16">
+            <p> non completed </p>
+          </div>
+          <ng-template #NonChecked>
+            <img src="../../assets/Bitmap-check.svg" alt="check" width="16" height="16">
+            <p> completed </p>
+          </ng-template>
+        </div>
       </div>
-      <div class="add-m-date">
-        <input matInput formControlName="form_date" [matDatepicker]="picker" placeholder="Input & change events"
-               (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+      <div class="delete-m-footer modal-footer">
+        <div class="delete-m-button d-flex justify-content-center align-items-center"
+             (click)="onDelete(data.id)" mdbWavesEffect>
+          <img src="../../assets/del-w.svg" alt="delete" width="18" height="18">
+          <p>Delete</p>
+        </div>
       </div>
-      <div class="add-m-notify">
-        <p> Notification</p>
-        <input type="text" class="form-control" formControlName="form_notify" placeholder="10 mins before">
-      </div>
-      <div class="add-m-color">
-        <p> Choose color</p>
-        <input type="color" class="form-control" formControlName="form_color" placeholder="">
-      </div>
-    </form>
-  </div>
-  <div class="add-m-footer modal-footer">
-    <div class="add-m-button d-flex justify-content-center align-items-center" (click)="addNewTask(addForm)" matRipple>
-      <p>Add</p>
     </div>
   </div>
-</ng-template>
+</div>
