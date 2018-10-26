@@ -105,7 +105,7 @@ $height-webkit:-webkit-fill-available;
   position: absolute;
   top: 16.8%;
   width: 100%;
-  height: 476px;
+  height: 76%;
   /*background: rgba(239, 245, 248, 0.467929);*/
 }
 
@@ -168,7 +168,7 @@ $height-webkit:-webkit-fill-available;
   left: 15%;
   width: 8%;
   height: 50px;
-  margin-top: 5px;
+  margin-top: 4px;
   padding: 12px 3%;
   z-index: 3;
 }
@@ -182,13 +182,6 @@ $height-webkit:-webkit-fill-available;
   border-radius: 3px;
   background-color: white;
   z-index: 1;
-  p {
-    width: 45%;
-    position: absolute;
-    top: 0;
-    margin-left: 14%;
-    text-align: start;
-  }
 }
 .task-group:hover {
   height: 92px;
@@ -199,10 +192,20 @@ $height-webkit:-webkit-fill-available;
 }
 
 .task-title-hover {
-  cursor: pointer;
   position: absolute;
-  top: 18px;
-  padding: 16px 0;
+  top: 0;
+  left: 11%;
+  width: 39%;
+  padding-left: 5px;
+  height: 48px;
+  p{
+    height: 20px;
+    width: 100%;
+    margin: 14px 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 .help-view {
@@ -228,11 +231,11 @@ $height-webkit:-webkit-fill-available;
 
 .help-details {
   width: 60%;
+  height: 45px;
   @include font-template(Raleway, normal, 300, normal, 14px, #050505);
   p {
-    margin-left: 0;
+    margin: 14px 0;
     text-align: start;
-    top: 20px;
     cursor: pointer;
   }
 }
@@ -242,7 +245,7 @@ $height-webkit:-webkit-fill-available;
   right: 8%;
   border-left: 1px solid #979797;
   height: 60%;
-  margin-top: 11px;
+  margin-top: 9px;
   width: 10%;
   padding-left: 10px;
   img {
@@ -253,10 +256,10 @@ $height-webkit:-webkit-fill-available;
 }
 .task-date {
   position: absolute;
-  width: 44%;
-  height: 17px;
   top: 0;
   right: 0;
+  width: 50%;
+  height: 48px;
   @include font-template(Raleway, normal, 400, normal, 14px, #050505);
   z-index: 2;
   p {
@@ -484,7 +487,7 @@ $height-webkit:-webkit-fill-available;
     left: 6.5%;
   }
 }
-.add-m-topic, .add-m-description, .add-m-date, .add-m-notify{
+.add-m-topic, .add-m-description, .add-m-notify{
   width: 100%;
   height: 85px;
   position: relative;
@@ -513,12 +516,16 @@ $height-webkit:-webkit-fill-available;
     @include font-template(Raleway, normal, 600, normal, 14px, #050505);
   }
 }
-.add-m-date input{
-  outline: none;
+.add-m-date{
+  @extend .add-m-topic;
+  input {
+    outline: none;
+  }
 }
 .mat-datepicker-toggle{
   position: absolute;
-  right: 0;
+  right: 2%;
+  top: 20px;
 }
 .add-m-footer{
   border: none;

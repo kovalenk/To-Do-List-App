@@ -12,6 +12,7 @@
       <span class="switch-selection"></span>
     </div>
   </div>
+
   <div class="info-container">
     <div *ngIf="monthly">
       <div class="monthly-view d-flex  justify-content-start">
@@ -32,7 +33,9 @@
             </div>
             <div class="task-group">
               <div class="task-title">
-                <p class="task-title-hover" [ngClass]="item.checked?'line-through':''">{{item.title}}</p>
+                <div class="task-title-hover">
+                  <p [ngClass]="item.checked?'line-through':''">{{item.title}}</p>
+                </div>
                 <div class="help-view">
                   <div class="help-group">
                     <div class="help-details">
@@ -74,7 +77,9 @@
             </div>
             <div class="task-group">
               <div class="task-title">
-                <p class="task-title-hover" [ngClass]="item.checked?'line-through':''">{{item.title}}</p>
+                <div class="task-title-hover">
+                  <p [ngClass]="item.checked?'line-through':''">{{item.title}}</p>
+                </div>
                 <div class="help-view">
                   <div class="help-group">
                     <div class="help-details">
@@ -138,10 +143,9 @@
             <input type="text" class=" form-control" formControlName="form_description" placeholder="Write Description">
           </div>
           <div class="add-m-date">
-            <input type="date" formControlName="form_date">
-            <!--<input matInput formControlName="form_date" [matDatepicker]="picker" placeholder="Input & change events">-->
-            <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-            <!--<mat-datepicker #picker></mat-datepicker>-->
+              <input matInput formControlName="form_date" [matDatepicker]="dp" >
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
           </div>
           <div class="add-m-notify">
             <p> Notification</p>

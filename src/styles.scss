@@ -3,3 +3,26 @@
 .modal-content{
 border: none;
 }
+.md-datepicker-calendar-pane{
+  z-index: 12;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+  display: none;
+  overflow: hidden;
+  outline: 0;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #000;
+}
